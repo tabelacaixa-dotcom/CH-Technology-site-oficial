@@ -125,13 +125,34 @@
           <label for="l-email">E-mail</label><input id="l-email" type="email" autocomplete="username" maxlength="120" />
           <label for="l-senha">Senha</label><input id="l-senha" type="password" autocomplete="current-password" maxlength="100" />
           <div class="msg" id="l-msg"></div>
-          <div class="row" style="align-items:center"><button class="main" type="submit" id="l-go">Entrar</button><button type="button" class="link" id="l-forgot">Esqueci minha senha</button></div>
+          <div class="row" style="align-items:center"><button class="main" type="submit" id="l-go">Entrar</button><button type="button" class="link" id="l-forgot">Esqueci minha senha</button><button type="button" class="link" id="l-reg">Criar conta</button></div>
         </form>
-        <div id="forgot-box" class="hide" style="margin-top:14px">
-          <p class="sub">Digite seu e-mail. Se ele estiver cadastrado, enviamos uma <b>nova senha</b>.</p>
-          <div class="row"><input id="fp-email" type="email" placeholder="seu@email.com" /><button type="button" class="sec" id="fp-go">Enviar nova senha</button></div>
-          <div class="msg ok" id="fp-msg"></div>
+      </div>
+
+      <!-- criar conta / recuperar acesso: e-mail -> código -> senha por e-mail -->
+      <div class="card hide" id="box-codigo">
+        <h2 id="cod-titulo">Recuperar acesso</h2>
+        <p class="sub" id="cod-sub">Digite o e-mail da sua conta. Enviamos um código de 6 dígitos para ele.</p>
+
+        <div id="cod-passo1">
+          <div id="cod-campo-nome" class="hide">
+            <label for="cod-nome">Nome</label>
+            <input id="cod-nome" type="text" maxlength="80" placeholder="Como quer ser chamado" />
+          </div>
+          <label for="cod-email">E-mail</label>
+          <input id="cod-email" type="email" autocomplete="email" maxlength="120" placeholder="seu@email.com" />
+          <div class="row"><button type="button" class="main" id="cod-enviar">Receber código por e-mail</button></div>
         </div>
+
+        <div id="cod-passo2" class="hide">
+          <p class="sub">Código enviado para <b id="cod-destino"></b>. Confira também o spam. Ele vale por <b id="cod-validade">10</b> minutos.</p>
+          <label for="cod-num">Código de 6 dígitos</label>
+          <input id="cod-num" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="000000" style="letter-spacing:6px;font-weight:700;font-size:18px" />
+          <div class="row"><button type="button" class="main" id="cod-confirmar">Confirmar código</button><button type="button" class="sec" id="cod-reenviar">Reenviar</button></div>
+        </div>
+
+        <div class="msg" id="cod-msg"></div>
+        <button type="button" class="link" id="cod-voltar">Voltar para o login</button>
       </div>
 
       <div id="box-area" class="hide">
@@ -275,10 +296,121 @@
     $('done-go').onclick = function () { tab('area'); };
 
     /* ---------- MINHA ÁREA ---------- */
-    $('l-forgot').onclick = function () { show('forgot-box', true); $('fp-email').value = $('l-email').value; };
-    $('fp-go').onclick = function () {
-      call('lic_esqueci_senha', { email: $('fp-email').value.trim() }, false).then(function (d) { msg('fp-msg', say(d), 'ok'); });
-    };
+    /* ---------- CRIAR CONTA / RECUPERAR COM CÓDIGO ----------
+       Fluxo: e-mail -> código de 6 dígitos -> servidor confere -> manda a senha.
+       Quem faz o trabalho é o Code.gs da loja (rotas lic_codigo e
+       lic_codigo_confirmar). O portal só mostra as telas. */
+    var codFinalidade = 'senha', codEmail = '', codRelogio = null, codSegundos = 0;
+
+    /* Traduz a resposta do servidor quando a rota ainda não existe. */
+    function explicar(d) {
+      var t = say(d);
+      if (/a[çc][ãa]o desconhecida/i.test(t)) {
+        return 'O servidor da loja ainda não tem esta função. Falta publicar o Code.gs novo no Apps Script.';
+      }
+      return t;
+    }
+
+    function pararRelogio() { if (codRelogio) { clearInterval(codRelogio); codRelogio = null; } }
+
+    function abrirCodigo(finalidade) {
+      codFinalidade = finalidade;
+      codEmail = '';
+      pararRelogio();
+      show('box-login', false); show('box-area', false); show('box-codigo', true);
+      show('cod-passo1', true); show('cod-passo2', false);
+      show('cod-campo-nome', finalidade === 'cadastro');
+      $('cod-titulo').textContent = finalidade === 'cadastro' ? 'Criar conta' : 'Recuperar acesso';
+      $('cod-sub').textContent = finalidade === 'cadastro'
+        ? 'Digite seu e-mail e seu nome. Enviamos um código de 6 dígitos para confirmar que o e-mail é seu.'
+        : 'Digite o e-mail da sua conta. Enviamos um código de 6 dígitos para você confirmar.';
+      $('cod-email').value = $('l-email').value.trim();
+      $('cod-num').value = '';
+      $('cod-reenviar').disabled = false; $('cod-reenviar').textContent = 'Reenviar';
+      msg('cod-msg', '');
+      ($('cod-email').value ? $('cod-enviar') : $('cod-email')).focus();
+    }
+
+    function voltarLogin() {
+      pararRelogio();
+      show('box-codigo', false); show('box-login', true);
+      msg('cod-msg', '');
+    }
+
+    function contarReenvio(segundos) {
+      pararRelogio();
+      codSegundos = Number(segundos || 60);
+      if (codSegundos < 30) codSegundos = 30;
+      $('cod-reenviar').disabled = true;
+      $('cod-reenviar').textContent = 'Reenviar (' + codSegundos + 's)';
+      codRelogio = setInterval(function () {
+        codSegundos--;
+        if (codSegundos <= 0) {
+          pararRelogio();
+          $('cod-reenviar').disabled = false;
+          $('cod-reenviar').textContent = 'Reenviar';
+          return;
+        }
+        $('cod-reenviar').textContent = 'Reenviar (' + codSegundos + 's)';
+      }, 1000);
+    }
+
+    function pedirCodigo() {
+      var email = $('cod-email').value.trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { msg('cod-msg', 'Informe um e-mail válido.'); return; }
+      $('cod-enviar').disabled = true;
+      msg('cod-msg', 'Enviando o código…');
+      call('lic_codigo', { email: email, nome: $('cod-nome').value.trim(), finalidade: codFinalidade }, false).then(function (d) {
+        $('cod-enviar').disabled = false;
+        if (!d.ok) { msg('cod-msg', explicar(d), 'warn'); return; }
+        codEmail = email;
+        $('cod-destino').textContent = d.destino || email;
+        $('cod-validade').textContent = Math.max(1, Math.round((d.expiraEm || 600) / 60));
+        show('cod-passo1', false); show('cod-passo2', true);
+        $('cod-num').value = '';
+        $('cod-num').focus();
+        msg('cod-msg', d.mensagem || 'Código enviado. Confira o e-mail e o spam.', 'ok');
+        contarReenvio(d.segundos || 60);
+      });
+    }
+
+    function confirmarCodigo() {
+      var codigo = ($('cod-num').value || '').replace(/\D/g, '');
+      if (codigo.length !== 6) { msg('cod-msg', 'O código tem 6 dígitos. Confira no e-mail.'); return; }
+      if (!codEmail) { msg('cod-msg', 'Peça um código novo: o e-mail se perdeu.'); return; }
+      $('cod-confirmar').disabled = true;
+      msg('cod-msg', 'Conferindo o código…');
+      call('lic_codigo_confirmar', { email: codEmail, codigo: codigo, finalidade: codFinalidade }, false).then(function (d) {
+        $('cod-confirmar').disabled = false;
+        if (!d.ok) {
+          var t = explicar(d);
+          msg('cod-msg', t, 'warn');
+          // Se o código expirou ou estourou as tentativas, libera pedir outro.
+          if (/expir|tentativ|inval|incorret/i.test(t)) { $('cod-reenviar').disabled = false; $('cod-reenviar').textContent = 'Reenviar'; pararRelogio(); }
+          return;
+        }
+        pararRelogio();
+        show('box-codigo', false); show('box-login', true);
+        $('l-email').value = codEmail;
+        $('l-senha').value = '';
+        $('l-senha').focus();
+        msg('l-msg', d.mensagem || 'Confirmado. Enviamos a sua senha para o e-mail.', 'ok');
+        toast('Senha enviada por e-mail.');
+      });
+    }
+
+    $('l-forgot').onclick = function () { abrirCodigo('senha'); };
+    $('l-reg').onclick = function () { abrirCodigo('cadastro'); };
+    $('cod-voltar').onclick = voltarLogin;
+    $('cod-enviar').onclick = pedirCodigo;
+    $('cod-reenviar').onclick = pedirCodigo;
+    $('cod-confirmar').onclick = confirmarCodigo;
+    $('cod-num').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') { e.preventDefault(); confirmarCodigo(); }
+    });
+    $('cod-email').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') { e.preventDefault(); pedirCodigo(); }
+    });
     $('login-form').onsubmit = function (e) {
       e.preventDefault(); if (busy) return;
       var email = $('l-email').value.trim(), senha = $('l-senha').value;
@@ -367,7 +499,8 @@
     if (!/^https:\/\/script\.google\.com\/.+\/exec$/.test(api)) { needConfig(); return; }
     if (/SEU_ID_AQUI/i.test(api)) { needConfig('O arquivo ainda esta com o endereco de exemplo. Abra o portal.html e troque SEU_ID_AQUI pelo ID real do seu Apps Script.'); return; }
     loadCatalog();
-    if (location.hash === '#esqueci') { tab('area'); show('forgot-box', true); }
+    if (location.hash === '#esqueci') { tab('area'); abrirCodigo('senha'); }
+    if (location.hash === '#criar') { tab('area'); abrirCodigo('cadastro'); }
     var retorno = new URLSearchParams(location.search).get('compra');
     var pend = null; try { pend = JSON.parse(localStorage.getItem('chPendente') || 'null'); } catch (_) {}
     if (retorno && /^[A-Za-z0-9]{10,40}$/.test(retorno)) { show('box-form', false); showWait(retorno, (pend && pend.email) || '', 'cartao'); history.replaceState(null, '', location.pathname); }
