@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="referrer" content="strict-origin-when-cross-origin" />
+<html lang="pt-BR"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <!-- Política de segurança: a página só se conecta ao seu Apps Script (e ao serviço de IP, só para registro). -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; connect-src https://script.google.com https://script.googleusercontent.com https://api.ipify.org; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; connect-src https://script.google.com https://script.googleusercontent.com https://api.ipify.org; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
   <title>Portal do Cliente — CH Technology</title>
   <script>
     /* Anti-clickjacking: se esta página for aberta dentro de outro site, não funciona. */
@@ -56,15 +55,16 @@
     <nav>
       <button type="button" id="nav-comprar" class="on">Comprar</button>
       <button type="button" id="nav-area">Minha área</button>
+      
     </nav>
   </header>
 
   <main>
     <!-- Configuração do endereço do servidor (aparece só se ainda não estiver configurado) -->
-    <section id="view-config" class="card" hidden>
+    <section id="view-config" class="card" hidden="">
       <h2>Configurar servidor</h2>
       <p class="sub">Cole o endereço do seu Apps Script (termina em <b>/exec</b>). Você também pode escrevê-lo na constante <code>API_URL</code> no começo do script desta página.</p>
-      <input id="cfg-url" type="url" placeholder="https://script.google.com/macros/s/.../exec" />
+      <input id="cfg-url" type="url" placeholder="https://script.google.com/macros/s/.../exec">
       <div class="msg" id="cfg-msg"></div>
       <button type="button" class="main" id="cfg-save">Salvar</button>
     </section>
@@ -75,10 +75,10 @@
         <h2>Comprar</h2>
         <p class="sub">Escolha o produto e a forma de pagamento. Depois da aprovação você recebe o recibo e a sua senha por e-mail.</p>
         <label for="f-produto">Produto</label>
-        <select id="f-produto"></select>
+        <select id="f-produto"><option value="app-demo-1">CH Central PDF &amp; Docs — R$ 29,99</option></select>
         <div class="row">
-          <div><label for="f-nome">Seu nome</label><input id="f-nome" type="text" maxlength="60" autocomplete="name" /></div>
-          <div><label for="f-email">Seu e-mail</label><input id="f-email" type="email" maxlength="120" autocomplete="email" /></div>
+          <div><label for="f-nome">Seu nome</label><input id="f-nome" type="text" maxlength="60" autocomplete="name"></div>
+          <div><label for="f-email">Seu e-mail</label><input id="f-email" type="email" maxlength="120" autocomplete="email"></div>
         </div>
         <label>Forma de pagamento</label>
         <div class="methods" id="methods">
@@ -94,9 +94,9 @@
       <div class="card hide" id="box-pix">
         <h2>Pague com Pix</h2>
         <p class="sub">Abra o app do seu banco, escolha Pix → “Pix Copia e Cola” ou leia o QR Code.</p>
-        <div class="qr"><img id="pix-qr" alt="QR Code do Pix" /><div style="flex:1;min-width:220px">
+        <div class="qr"><img id="pix-qr" alt="QR Code do Pix"><div style="flex:1;min-width:220px">
           <label>Pix Copia e Cola</label>
-          <div class="copy"><input id="pix-code" readonly /><button type="button" class="sec" id="pix-copy">Copiar</button></div>
+          <div class="copy"><input id="pix-code" readonly=""><button type="button" class="sec" id="pix-copy">Copiar</button></div>
           <p class="dev" id="pix-timer"></p>
         </div></div>
         <div class="msg warn" id="pix-status">Aguardando o pagamento…</div>
@@ -117,13 +117,13 @@
     </section>
 
     <!-- ============ MINHA ÁREA ============ -->
-    <section id="view-area" hidden>
+    <section id="view-area" hidden="">
       <div class="card" id="box-login">
         <h2>Minha área</h2>
         <p class="sub">Entre com o e-mail e a senha que você recebeu por e-mail.</p>
-        <form id="login-form" novalidate>
-          <label for="l-email">E-mail</label><input id="l-email" type="email" autocomplete="username" maxlength="120" />
-          <label for="l-senha">Senha</label><input id="l-senha" type="password" autocomplete="current-password" maxlength="100" />
+        <form id="login-form" novalidate="">
+          <label for="l-email">E-mail</label><input id="l-email" type="email" autocomplete="username" maxlength="120">
+          <label for="l-senha">Senha</label><input id="l-senha" type="password" autocomplete="current-password" maxlength="100">
           <div class="msg" id="l-msg"></div>
           <div class="row" style="align-items:center"><button class="main" type="submit" id="l-go">Entrar</button><button type="button" class="link" id="l-forgot">Esqueci minha senha</button><button type="button" class="link" id="l-reg">Criar conta</button></div>
         </form>
@@ -137,17 +137,17 @@
         <div id="cod-passo1">
           <div id="cod-campo-nome" class="hide">
             <label for="cod-nome">Nome</label>
-            <input id="cod-nome" type="text" maxlength="80" placeholder="Como quer ser chamado" />
+            <input id="cod-nome" type="text" maxlength="80" placeholder="Como quer ser chamado">
           </div>
           <label for="cod-email">E-mail</label>
-          <input id="cod-email" type="email" autocomplete="email" maxlength="120" placeholder="seu@email.com" />
+          <input id="cod-email" type="email" autocomplete="email" maxlength="120" placeholder="seu@email.com">
           <div class="row"><button type="button" class="main" id="cod-enviar">Receber código por e-mail</button></div>
         </div>
 
         <div id="cod-passo2" class="hide">
           <p class="sub">Código enviado para <b id="cod-destino"></b>. Confira também o spam. Ele vale por <b id="cod-validade">10</b> minutos.</p>
           <label for="cod-num">Código de 6 dígitos</label>
-          <input id="cod-num" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="000000" style="letter-spacing:6px;font-weight:700;font-size:18px" />
+          <input id="cod-num" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="000000" style="letter-spacing:6px;font-weight:700;font-size:18px">
           <div class="row"><button type="button" class="main" id="cod-confirmar">Confirmar código</button><button type="button" class="sec" id="cod-reenviar">Reenviar</button></div>
         </div>
 
@@ -163,12 +163,15 @@
         <div class="card"><h3>Meus produtos</h3><div id="a-prods"></div><div class="msg" id="a-msg"></div></div>
         <div class="card">
           <h3>Alterar senha</h3>
-          <div class="row"><div><label for="p-atual">Senha atual</label><input id="p-atual" type="password" autocomplete="current-password" /></div>
-          <div><label for="p-nova">Nova senha (mín. 10, letras e números)</label><input id="p-nova" type="password" autocomplete="new-password" /></div></div>
+          <div class="row"><div><label for="p-atual">Senha atual</label><input id="p-atual" type="password" autocomplete="current-password"></div>
+          <div><label for="p-nova">Nova senha (mín. 10, letras e números)</label><input id="p-nova" type="password" autocomplete="new-password"></div></div>
           <div class="msg" id="p-msg"></div><button type="button" class="sec" id="p-go">Alterar senha</button>
         </div>
       </div>
     </section>
+
+    <!-- ============ DEV ============ -->
+    
   </main>
   <div id="toast" role="status"></div>
 
@@ -180,7 +183,7 @@
        Se um dia republicar o Apps Script com um ID novo, troque aqui.
        Com esta linha preenchida, a tela "Configurar servidor" não aparece
        para o visitante. */
-    var API_URL = 'https://script.google.com/macros/s/AKfycbx9sTgNYNUzvXmUNK5m78r7W8NBlIYHD4Az-14OM0RQhvvosCbvH8-E8rfFZYFIycq8Yg/exec';
+    var API_URL = 'https://script.google.com/macros/s/AKfycbwduuApUnsAy9M9Ia6j5rWTEFQaBLY11CR9RpCqjGKkn3qbuDgO-3Rro-X_-D7C8IrDkw/exec';
 
     var $ = function (id) { return document.getElementById(id); };
     var api = API_URL || localStorage.getItem('chApiUrl') || '';
@@ -505,7 +508,82 @@
     var pend = null; try { pend = JSON.parse(localStorage.getItem('chPendente') || 'null'); } catch (_) {}
     if (retorno && /^[A-Za-z0-9]{10,40}$/.test(retorno)) { show('box-form', false); showWait(retorno, (pend && pend.email) || '', 'cartao'); history.replaceState(null, '', location.pathname); }
     if (token) { tab('area'); loadArea(); }
+
+    /* ---------- DEV TAB ---------- */
+    var devUrlInput = $('dev-url');
+    var currentApi = API_URL || localStorage.getItem('chApiUrl') || '';
+    if (devUrlInput && currentApi) devUrlInput.value = currentApi;
+
+    function showDevPanel() {
+      $('view-config').hidden = true; $('view-comprar').hidden = true; $('view-area').hidden = true;
+      $('view-dev').classList.remove('hide');
+      $('nav-comprar').classList.remove('on'); $('nav-area').classList.remove('on');
+    }
+
+    var navDev = $('nav-dev');
+    if (navDev) navDev.onclick = showDevPanel;
+
+    var devSave = $('dev-save');
+    if (devSave) devSave.onclick = function () {
+      var v = $('dev-url').value.trim();
+      if (!/^https:\/\/script\.google\.com\/.+\/exec$/.test(v)) { msg('dev-msg', 'O endereço deve começar com https://script.google.com/ e terminar com /exec'); return; }
+      localStorage.setItem('chApiUrl', v);
+      msg('dev-msg', 'Configuração salva! Recarregando...', 'ok');
+      setTimeout(function () { location.reload(); }, 800);
+    };
+
+    var devExport = $('dev-export');
+    if (devExport) devExport.onclick = function () {
+      var urlVal = $('dev-url').value.trim();
+      if (!/^https:\/\/script\.google\.com\/.+\/exec$/.test(urlVal)) { msg('dev-msg', 'Configure um /exec válido antes de exportar.'); return; }
+      msg('dev-msg', 'Gerando HTML final...', 'warn');
+      try {
+        var clone = document.documentElement.cloneNode(true);
+        // Remove Dev elements
+        var dn = clone.querySelector('#nav-dev'); if (dn) dn.remove();
+        var dp = clone.querySelector('#view-dev'); if (dp) dp.remove();
+        // Reset views: show comprar, hide others
+        var vc = clone.querySelector('#view-comprar'); if (vc) vc.removeAttribute('hidden');
+        var va = clone.querySelector('#view-area'); if (va) va.setAttribute('hidden', '');
+        var vcfg = clone.querySelector('#view-config'); if (vcfg) vcfg.setAttribute('hidden', '');
+        // Reset nav buttons
+        var nbuy = clone.querySelector('#nav-comprar'); if (nbuy) nbuy.classList.add('on');
+        var narea = clone.querySelector('#nav-area'); if (narea) narea.classList.remove('on');
+        // Replace API_URL in the script
+        var scripts = clone.querySelectorAll('script');
+        for (var i = 0; i < scripts.length; i++) {
+          var txt = scripts[i].textContent;
+          if (txt.indexOf('var API_URL') >= 0) {
+            scripts[i].textContent = txt.replace(
+              /var\s+API_URL\s*=\s*'[^']*'/,
+              "var API_URL = '" + urlVal + "'"
+            );
+          }
+        }
+        // Remove toast content
+        var toastEl = clone.querySelector('#toast'); if (toastEl) toastEl.textContent = '';
+        // Clear form fields
+        var inputs = clone.querySelectorAll('input');
+        for (var j = 0; j < inputs.length; j++) {
+          if (inputs[j].type !== 'hidden') inputs[j].removeAttribute('value');
+        }
+        var output = '<!DOCTYPE html>\n' + clone.outerHTML;
+        var blob = new Blob([output], { type: 'text/html;charset=utf-8' });
+        var a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'portal.html';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(a.href);
+        msg('dev-msg', 'HTML final baixado como portal.html!', 'ok');
+      } catch (e) {
+        msg('dev-msg', 'Erro ao exportar: ' + e.message);
+      }
+    };
+
   })();
   </script>
-</body>
-</html>
+
+
+</body></html>
