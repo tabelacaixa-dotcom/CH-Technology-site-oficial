@@ -64,7 +64,7 @@
     <section id="view-config" class="card" hidden>
       <h2>Configurar servidor</h2>
       <p class="sub">Cole o endereço do seu Apps Script (termina em <b>/exec</b>). Você também pode escrevê-lo na constante <code>API_URL</code> no começo do script desta página.</p>
-      <input id="cfg-url" type="url" placeholder="https://script.google.com/macros/s/AKfycbx9sTgNYNUzvXmUNK5m78r7W8NBlIYHD4Az-14OM0RQhvvosCbvH8-E8rfFZYFIycq8Yg/exec" />
+      <input id="cfg-url" type="url" placeholder="https://script.google.com/macros/s/.../exec" />
       <div class="msg" id="cfg-msg"></div>
       <button type="button" class="main" id="cfg-save">Salvar</button>
     </section>
@@ -154,12 +154,12 @@
   <script>
   (function () {
     'use strict';
-    /* ===== CONFIGURAÇÃO =====
-       TROQUE APENAS o trecho SEU_ID_AQUI pelo ID do seu Apps Script.
-       Endereço completo: Apps Script -> Implantar -> Gerenciar implantações
-       (o texto entre "/macros/s/" e "/exec").
-       Com isso preenchido, a tela "Configurar servidor" NUNCA mais aparece para o visitante. */
-    var API_URL = 'https://script.google.com/macros/s/SEU_ID_AQUI/exec';
+    /* ===== CONFIGURAÇÃO (já preenchida) =====
+       Endereço /exec do Apps Script do projeto.
+       Se um dia republicar o Apps Script com um ID novo, troque aqui.
+       Com esta linha preenchida, a tela "Configurar servidor" não aparece
+       para o visitante. */
+    var API_URL = 'https://script.google.com/macros/s/AKfycbx9sTgNYNUzvXmUNK5m78r7W8NBlIYHD4Az-14OM0RQhvvosCbvH8-E8rfFZYFIycq8Yg/exec';
 
     var $ = function (id) { return document.getElementById(id); };
     var api = API_URL || localStorage.getItem('chApiUrl') || '';
