@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <!-- Política de segurança: a página só se conecta ao seu Apps Script (e ao serviço de IP, só para registro). -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; connect-src https://script.google.com https://script.googleusercontent.com https://api.ipify.org; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'" />
+  <title>Portal do Cliente — CH Technology</title>
+  <script>
+    /* Anti-clickjacking: se esta página for aberta dentro de outro site, não funciona. */
+    (function () { var f = false; try { f = window.top !== window.self; } catch (_) { f = true; } if (f) { document.documentElement.textContent = ''; var b = document.createElement('body'); b.textContent = 'Por segurança, esta página não pode ser exibida dentro de outro site.'; document.documentElement.appendChild(b); try { window.stop(); } catch (_) {} } })();
+  </script>
+  <style>
+    :root { --bg:#070a12; --card:#0f172a; --card2:#111c33; --line:#1e293b; --txt:#f1f5f9; --mut:#94a3b8; --ac:#38bdf8; --ac2:#818cf8; --ok:#34d399; --err:#f87171; --warn:#fbbf24; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:radial-gradient(1000px 500px at 10% -10%, #14224a 0%, transparent 60%), var(--bg); color:var(--txt); font:15px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; min-height:100vh; }
+    header { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; padding:14px 18px; border-bottom:1px solid var(--line); background:rgba(7,10,18,.85); position:sticky; top:0; backdrop-filter:blur(8px); z-index:5; }
+    header h1 { margin:0; font-size:17px; } header h1 span { color:var(--ac); }
+    nav { display:flex; gap:6px; }
+    nav button { background:transparent; color:var(--mut); border:1px solid var(--line); padding:8px 14px; border-radius:999px; font-weight:700; cursor:pointer; font-size:13px; }
+    nav button.on { color:#04111f; background:linear-gradient(90deg,var(--ac),var(--ac2)); border-color:transparent; }
+    main { max-width:760px; margin:0 auto; padding:22px 16px 80px; }
+    section[hidden] { display:none; }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:18px; padding:20px; margin-bottom:16px; }
+    h2 { margin:0 0 4px; font-size:18px; } h3 { margin:0 0 8px; font-size:15px; }
+    p.sub { margin:0 0 14px; color:var(--mut); font-size:13px; }
+    label { display:block; font-size:12px; color:var(--mut); margin:12px 0 4px; }
+    input, select { width:100%; padding:12px 14px; border-radius:12px; border:1px solid #334155; background:#020617; color:var(--txt); font-size:15px; }
+    input:focus, select:focus { outline:2px solid var(--ac); border-color:transparent; }
+    button.main { padding:13px 18px; border:0; border-radius:12px; background:linear-gradient(90deg,var(--ac),var(--ac2)); color:#04111f; font-weight:800; font-size:14px; cursor:pointer; }
+    button.sec { padding:11px 16px; border-radius:12px; background:transparent; border:1px solid #334155; color:var(--txt); font-weight:700; font-size:14px; cursor:pointer; }
+    button:disabled { opacity:.55; cursor:default; }
+    button.link { background:none; border:0; color:#7dd3fc; text-decoration:underline; cursor:pointer; padding:0; font-size:13px; }
+    .row { display:flex; gap:10px; flex-wrap:wrap; } .row > * { flex:1; min-width:140px; }
+    .methods { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:6px; }
+    .method { border:1.5px solid #334155; border-radius:14px; padding:12px 6px; text-align:center; cursor:pointer; font-weight:700; font-size:13px; background:#0b1326; }
+    .method.on { border-color:var(--ac); background:#0c2038; } .method small { display:block; font-weight:400; color:var(--mut); margin-top:2px; font-size:11px; }
+    .msg { min-height:20px; margin-top:10px; font-size:13px; color:var(--err); } .msg.ok { color:var(--ok); } .msg.warn { color:var(--warn); }
+    .qr { display:flex; gap:16px; flex-wrap:wrap; align-items:center; justify-content:center; }
+    .qr img { width:200px; height:200px; background:#fff; padding:8px; border-radius:12px; }
+    .copy { display:flex; gap:8px; } .copy input { font-family:ui-monospace,monospace; font-size:12px; }
+    .prod { border:1px solid var(--line); background:var(--card2); border-radius:14px; padding:14px; margin-top:12px; }
+    .prod .meta { color:var(--mut); font-size:12px; margin:2px 0 10px; }
+    .prod .acts { display:flex; gap:10px; flex-wrap:wrap; } .prod .acts > button { flex:1; min-width:150px; }
+    .bar { height:8px; border-radius:99px; background:#1e293b; overflow:hidden; margin-top:10px; } .bar > i { display:block; height:100%; width:0; background:linear-gradient(90deg,var(--ac),var(--ac2)); transition:width .2s; }
+    .note { background:#2a1d05; border:1px solid #6b4a0a; color:#fde68a; padding:12px 14px; border-radius:12px; font-size:13px; }
+    .dev { font-size:13px; color:var(--mut); margin:8px 0 0; }
+    #toast { position:fixed; left:50%; bottom:22px; transform:translateX(-50%); background:#0b1326; border:1px solid #334155; padding:10px 16px; border-radius:12px; font-size:13px; display:none; max-width:92vw; z-index:20; }
+    .hide { display:none !important; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><span>CH</span> Technology — Portal do Cliente</h1>
+    <nav>
+      <button type="button" id="nav-comprar" class="on">Comprar</button>
+      <button type="button" id="nav-area">Minha área</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Configuração do endereço do servidor (aparece só se ainda não estiver configurado) -->
+    <section id="view-config" class="card" hidden>
+      <h2>Configurar servidor</h2>
+      <p class="sub">Cole o endereço do seu Apps Script (termina em <b>/exec</b>). Você também pode escrevê-lo na constante <code>API_URL</code> no começo do script desta página.</p>
+      <input id="cfg-url" type="url" placeholder="https://script.google.com/macros/s/.../exec" />
+      <div class="msg" id="cfg-msg"></div>
+      <button type="button" class="main" id="cfg-save">Salvar</button>
+    </section>
+
+    <!-- ============ COMPRAR ============ -->
+    <section id="view-comprar">
+      <div class="card" id="box-form">
+        <h2>Comprar</h2>
+        <p class="sub">Escolha o produto e a forma de pagamento. Depois da aprovação você recebe o recibo e a sua senha por e-mail.</p>
+        <label for="f-produto">Produto</label>
+        <select id="f-produto"></select>
+        <div class="row">
+          <div><label for="f-nome">Seu nome</label><input id="f-nome" type="text" maxlength="60" autocomplete="name" /></div>
+          <div><label for="f-email">Seu e-mail</label><input id="f-email" type="email" maxlength="120" autocomplete="email" /></div>
+        </div>
+        <label>Forma de pagamento</label>
+        <div class="methods" id="methods">
+          <div class="method on" data-m="pix" role="button" tabindex="0">Pix<small>Aprovação na hora</small></div>
+          <div class="method" data-m="cartao" role="button" tabindex="0">Cartão<small>Crédito ou débito</small></div>
+          <div class="method" data-m="boleto" role="button" tabindex="0">Boleto<small>Até 3 dias úteis</small></div>
+        </div>
+        <div class="note" style="margin-top:14px">Sua conta ficará vinculada a <b>um único aparelho</b>. Não compartilhe e-mail nem senha.</div>
+        <div class="msg" id="f-msg"></div>
+        <button type="button" class="main" id="f-go" style="margin-top:8px">Continuar</button>
+      </div>
+
+      <div class="card hide" id="box-pix">
+        <h2>Pague com Pix</h2>
+        <p class="sub">Abra o app do seu banco, escolha Pix → “Pix Copia e Cola” ou leia o QR Code.</p>
+        <div class="qr"><img id="pix-qr" alt="QR Code do Pix" /><div style="flex:1;min-width:220px">
+          <label>Pix Copia e Cola</label>
+          <div class="copy"><input id="pix-code" readonly /><button type="button" class="sec" id="pix-copy">Copiar</button></div>
+          <p class="dev" id="pix-timer"></p>
+        </div></div>
+        <div class="msg warn" id="pix-status">Aguardando o pagamento…</div>
+      </div>
+
+      <div class="card hide" id="box-wait">
+        <h2 id="wait-title">Confirmando pagamento…</h2>
+        <p class="sub" id="wait-sub">Assim que o pagamento for aprovado, enviamos o recibo e a senha para o seu e-mail.</p>
+        <div class="msg warn" id="wait-status"></div>
+        <div class="row"><button type="button" class="sec" id="wait-check">Já paguei — verificar</button></div>
+      </div>
+
+      <div class="card hide" id="box-done">
+        <h2 style="color:var(--ok)">Pagamento aprovado! ✅</h2>
+        <p class="sub">Enviamos o <b>recibo</b> e a sua <b>senha</b> para <b id="done-email"></b>. Confira também o spam.</p>
+        <button type="button" class="main" id="done-go">Ir para Minha área</button>
+      </div>
+    </section>
+
+    <!-- ============ MINHA ÁREA ============ -->
+    <section id="view-area" hidden>
+      <div class="card" id="box-login">
+        <h2>Minha área</h2>
+        <p class="sub">Entre com o e-mail e a senha que você recebeu por e-mail.</p>
+        <form id="login-form" novalidate>
+          <label for="l-email">E-mail</label><input id="l-email" type="email" autocomplete="username" maxlength="120" />
+          <label for="l-senha">Senha</label><input id="l-senha" type="password" autocomplete="current-password" maxlength="100" />
+          <div class="msg" id="l-msg"></div>
+          <div class="row" style="align-items:center"><button class="main" type="submit" id="l-go">Entrar</button><button type="button" class="link" id="l-forgot">Esqueci minha senha</button></div>
+        </form>
+        <div id="forgot-box" class="hide" style="margin-top:14px">
+          <p class="sub">Digite seu e-mail. Se ele estiver cadastrado, enviamos uma <b>nova senha</b>.</p>
+          <div class="row"><input id="fp-email" type="email" placeholder="seu@email.com" /><button type="button" class="sec" id="fp-go">Enviar nova senha</button></div>
+          <div class="msg ok" id="fp-msg"></div>
+        </div>
+      </div>
+
+      <div id="box-area" class="hide">
+        <div class="card">
+          <div class="row" style="align-items:center"><div><h2 id="a-nome">Olá</h2><p class="sub" style="margin:0" id="a-email"></p></div>
+            <div style="text-align:right;flex:0 0 auto"><button type="button" class="sec" id="a-logout">Sair</button></div></div>
+        </div>
+        <div class="card"><h3>Meus produtos</h3><div id="a-prods"></div><div class="msg" id="a-msg"></div></div>
+        <div class="card">
+          <h3>Alterar senha</h3>
+          <div class="row"><div><label for="p-atual">Senha atual</label><input id="p-atual" type="password" autocomplete="current-password" /></div>
+          <div><label for="p-nova">Nova senha (mín. 10, letras e números)</label><input id="p-nova" type="password" autocomplete="new-password" /></div></div>
+          <div class="msg" id="p-msg"></div><button type="button" class="sec" id="p-go">Alterar senha</button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div id="toast" role="status"></div>
+
+  <script>
+  (function () {
+    'use strict';
+    /* ===== CONFIGURAÇÃO: cole aqui o endereço /exec do seu Apps Script (ou use a tela de configuração) ===== */
+    var API_URL = '';
+
+    var $ = function (id) { return document.getElementById(id); };
+    var api = API_URL || localStorage.getItem('chApiUrl') || '';
+    var token = sessionStorage.getItem('chPortalToken') || '';
+    var metodo = 'pix', catalogo = [], pollT = null, pixT = null, busy = false;
+
+    function toast(m) { var t = $('toast'); t.textContent = m; t.style.display = 'block'; clearTimeout(toast.t); toast.t = setTimeout(function () { t.style.display = 'none'; }, 4200); }
+    function show(id, on) { $(id).classList.toggle('hide', !on); }
+    function msg(id, text, cls) { var e = $(id); e.textContent = text || ''; e.className = 'msg' + (cls ? ' ' + cls : ''); }
+    function money(n) { return 'R$ ' + Number(n || 0).toFixed(2).replace('.', ','); }
+    function fmtDate(iso) { try { return new Date(iso).toLocaleDateString('pt-BR'); } catch (_) { return ''; } }
+    function deviceId() { var k = 'chPortalDev'; var v = localStorage.getItem(k); if (!v) { var a = new Uint8Array(20); crypto.getRandomValues(a); v = 'P' + Array.prototype.map.call(a, function (b) { return ('0' + b.toString(16)).slice(-2); }).join(''); localStorage.setItem(k, v); } return v; }
+
+    function call(action, payload, useToken) {
+      var body = { action: action }; for (var k in (payload || {})) body[k] = payload[k];
+      if (useToken !== false && token) body.token = token;
+      return fetch(api, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(body) })
+        .then(function (r) { return r.json(); })
+        .catch(function () { return { ok: false, mensagem: 'Sem conexão com o servidor. Tente de novo.' }; })
+        .then(function (d) {
+          if (d && d.error === 'auth_required') { logout(true); return { ok: false, mensagem: 'Sua sessão expirou. Entre novamente.' }; }
+          return d || { ok: false, mensagem: 'Resposta inválida.' };
+        });
+    }
+    function say(d) { return (d && (d.mensagem || d.error)) || 'Erro inesperado.'; }
+
+    /* ---------- navegação ---------- */
+    function tab(name) {
+      $('view-comprar').hidden = name !== 'comprar'; $('view-area').hidden = name !== 'area';
+      $('nav-comprar').classList.toggle('on', name === 'comprar'); $('nav-area').classList.toggle('on', name === 'area');
+    }
+    $('nav-comprar').onclick = function () { tab('comprar'); }; $('nav-area').onclick = function () { tab('area'); };
+
+    /* ---------- configuração do servidor ---------- */
+    function needConfig() {
+      $('view-config').hidden = false; $('view-comprar').hidden = true; $('view-area').hidden = true;
+    }
+    $('cfg-save').onclick = function () {
+      var v = $('cfg-url').value.trim();
+      if (!/^https:\/\/script\.google\.com\/.+\/exec$/.test(v)) { msg('cfg-msg', 'O endereço deve começar com https://script.google.com/ e terminar com /exec'); return; }
+      localStorage.setItem('chApiUrl', v); location.reload();
+    };
+
+    /* ---------- COMPRAR ---------- */
+    function loadCatalog() {
+      call('lic_catalogo', {}, false).then(function (d) {
+        var sel = $('f-produto'); sel.textContent = '';
+        if (!d.ok || !d.produtos.length) { var o = document.createElement('option'); o.textContent = 'Nenhum produto à venda no momento'; sel.appendChild(o); $('f-go').disabled = true; return; }
+        catalogo = d.produtos;
+        d.produtos.forEach(function (p) { var o = document.createElement('option'); o.value = p.produto; o.textContent = p.titulo + ' — ' + money(p.preco); sel.appendChild(o); });
+        var wanted = new URLSearchParams(location.search).get('produto'); if (wanted) sel.value = wanted;
+      });
+    }
+    Array.prototype.forEach.call(document.querySelectorAll('.method'), function (m) {
+      var pick = function () { metodo = m.getAttribute('data-m'); Array.prototype.forEach.call(document.querySelectorAll('.method'), function (x) { x.classList.toggle('on', x === m); }); };
+      m.onclick = pick; m.onkeydown = function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(); } };
+    });
+
+    $('f-go').onclick = function () {
+      var nome = $('f-nome').value.trim(), email = $('f-email').value.trim(), produto = $('f-produto').value;
+      if (!nome) { msg('f-msg', 'Informe seu nome.'); return; }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { msg('f-msg', 'Informe um e-mail válido (a senha será enviada para ele).'); return; }
+      msg('f-msg', ''); $('f-go').disabled = true; $('f-go').textContent = 'Aguarde…';
+      var back = location.protocol === 'https:' ? location.origin + location.pathname : '';
+      call('lic_checkout', { produto: produto, nome: nome, email: email, metodo: metodo, returnUrl: back }, false).then(function (d) {
+        $('f-go').disabled = false; $('f-go').textContent = 'Continuar';
+        if (!d.ok) { msg('f-msg', say(d)); return; }
+        localStorage.setItem('chPendente', JSON.stringify({ id: d.purchaseId, email: email }));
+        if (metodo === 'pix') showPix(d, email);
+        else { show('box-form', false); showWait(d.purchaseId, email, metodo); if (location.protocol === 'https:') location.href = d.checkoutUrl; else window.open(d.checkoutUrl, '_blank', 'noopener'); }
+      });
+    };
+
+    function showPix(d, email) {
+      show('box-form', false); show('box-pix', true);
+      $('pix-qr').src = d.qr_code_base64 ? 'data:image/png;base64,' + d.qr_code_base64 : '';
+      $('pix-qr').classList.toggle('hide', !d.qr_code_base64);
+      $('pix-code').value = d.qr_code;
+      var fim = new Date(d.expiraEm).getTime();
+      clearInterval(pixT); pixT = setInterval(function () {
+        var s = Math.max(0, Math.round((fim - Date.now()) / 1000));
+        $('pix-timer').textContent = s ? 'Este Pix vale por mais ' + Math.floor(s / 60) + 'min ' + ('0' + (s % 60)).slice(-2) + 's.' : 'Este Pix expirou. Volte e gere outro.';
+        if (!s) { clearInterval(pixT); stopPoll(); }
+      }, 1000);
+      poll(d.purchaseId, email, fim + 60000);
+    }
+    $('pix-copy').onclick = function () {
+      var v = $('pix-code').value;
+      (navigator.clipboard ? navigator.clipboard.writeText(v) : Promise.reject()).then(function () { toast('Código Pix copiado!'); }, function () { $('pix-code').select(); document.execCommand('copy'); toast('Código Pix copiado!'); });
+    };
+
+    function showWait(id, email, m) {
+      show('box-wait', true);
+      $('wait-title').textContent = m === 'boleto' ? 'Aguardando o boleto' : 'Confirmando pagamento…';
+      $('wait-sub').textContent = m === 'boleto' ? 'O boleto pode levar até 3 dias úteis para compensar. Quando for aprovado, enviamos o recibo e a senha por e-mail.' : 'Assim que o pagamento for aprovado, enviamos o recibo e a senha para o seu e-mail.';
+      $('wait-check').onclick = function () { check(id, email, true); };
+      poll(id, email, Date.now() + 15 * 60000);
+    }
+    function stopPoll() { clearInterval(pollT); pollT = null; }
+    function poll(id, email, until) { stopPoll(); pollT = setInterval(function () { if (Date.now() > until) { stopPoll(); return; } check(id, email, false); }, 4000); check(id, email, false); }
+    function check(id, email, manual) {
+      call('lic_status', { purchaseId: id }, false).then(function (d) {
+        if (!d.ok) { if (manual) toast(say(d)); return; }
+        if (d.status === 'approved') {
+          stopPoll(); clearInterval(pixT); localStorage.removeItem('chPendente');
+          show('box-form', false); show('box-pix', false); show('box-wait', false); show('box-done', true); $('done-email').textContent = email;
+          $('l-email').value = email;
+        } else if (d.status === 'revoked') { stopPoll(); msg('wait-status', 'Este pagamento foi cancelado ou reembolsado.'); }
+        else { msg('wait-status', manual ? 'Ainda não confirmado. Aguarde alguns instantes e tente de novo.' : '', 'warn'); }
+      });
+    }
+    $('done-go').onclick = function () { tab('area'); };
+
+    /* ---------- MINHA ÁREA ---------- */
+    $('l-forgot').onclick = function () { show('forgot-box', true); $('fp-email').value = $('l-email').value; };
+    $('fp-go').onclick = function () {
+      call('lic_esqueci_senha', { email: $('fp-email').value.trim() }, false).then(function (d) { msg('fp-msg', say(d), 'ok'); });
+    };
+    $('login-form').onsubmit = function (e) {
+      e.preventDefault(); if (busy) return;
+      var email = $('l-email').value.trim(), senha = $('l-senha').value;
+      if (!email || !senha) { msg('l-msg', 'Informe e-mail e senha.'); return; }
+      busy = true; $('l-go').disabled = true; msg('l-msg', '');
+      call('lic_portal_login', { email: email, senha: senha, device_id: deviceId() }, false).then(function (d) {
+        busy = false; $('l-go').disabled = false; $('l-senha').value = '';
+        if (!d.ok) { msg('l-msg', say(d)); return; }
+        token = d.token; sessionStorage.setItem('chPortalToken', token); loadArea();
+      });
+    };
+    function logout(silent) {
+      var t = token; token = ''; sessionStorage.removeItem('chPortalToken');
+      if (t && !silent) call('lic_logout', { token: t }, false);
+      show('box-area', false); show('box-login', true);
+    }
+    $('a-logout').onclick = function () { logout(false); };
+
+    function loadArea() {
+      call('lic_meus_produtos', {}).then(function (d) {
+        if (!d.ok) { if (token) toast(say(d)); return; }
+        show('box-login', false); show('box-area', true);
+        $('a-nome').textContent = 'Olá, ' + d.nome; $('a-email').textContent = '';
+        var box = $('a-prods'); box.textContent = '';
+        if (!d.produtos.length) { var p0 = document.createElement('p'); p0.className = 'sub'; p0.textContent = 'Nenhum produto ativo nesta conta.'; box.appendChild(p0); }
+        var dv = d.dispositivo || {};
+        d.produtos.forEach(function (p) {
+          var c = document.createElement('div'); c.className = 'prod';
+          var h = document.createElement('b'); h.textContent = p.titulo; c.appendChild(h);
+          var m = document.createElement('div'); m.className = 'meta'; m.textContent = 'Comprado em ' + fmtDate(p.data) + ' • ' + money(p.valor) + ' • ' + p.forma; c.appendChild(m);
+          var acts = document.createElement('div'); acts.className = 'acts';
+          var b1 = document.createElement('button'); b1.className = 'main'; b1.textContent = '⬇ Baixar Produto'; b1.onclick = function () { download(p.produto, b1, c); };
+          var b2 = document.createElement('button'); b2.className = 'sec'; b2.textContent = '🔄 Trocar de Aparelho'; b2.onclick = function () { trocar(); };
+          acts.appendChild(b1); acts.appendChild(b2); c.appendChild(acts);
+          box.appendChild(c);
+        });
+        var info = document.createElement('p'); info.className = 'dev';
+        info.textContent = (dv.vinculado ? 'Aparelho vinculado desde ' + fmtDate(dv.desde) + '. ' : 'Nenhum aparelho vinculado: o próximo login no aplicativo define o seu aparelho padrão. ') +
+          (dv.diasParaNovaTroca > 0 ? 'Nova troca de aparelho disponível em ' + dv.diasParaNovaTroca + ' dia(s).' : 'Troca de aparelho disponível agora.');
+        box.appendChild(info);
+      });
+    }
+    function trocar() {
+      if (!confirm('Desvincular o aparelho atual? Você só poderá trocar de aparelho de novo daqui a 30 dias.')) return;
+      call('lic_trocar_aparelho', {}).then(function (d) { msg('a-msg', say(d), d.ok ? 'ok' : ''); if (d.ok) loadArea(); });
+    }
+
+    /* ---------- download em memória (o link real do arquivo nunca aparece) ---------- */
+    function b64(b) { var s = atob(b), a = new Uint8Array(s.length); for (var i = 0; i < s.length; i++) a[i] = s.charCodeAt(i); return a; }
+    function sha(bytes) {
+      if (!(crypto && crypto.subtle)) return Promise.resolve(null);
+      return crypto.subtle.digest('SHA-256', bytes).then(function (buf) { return Array.prototype.map.call(new Uint8Array(buf), function (x) { return ('0' + x.toString(16)).slice(-2); }).join(''); });
+    }
+    function part(b64s, expected) { var bytes = b64(b64s); return sha(bytes).then(function (h) { if (h && expected && h !== expected) throw new Error('O arquivo chegou corrompido. Tente de novo.'); return bytes; }); }
+    function save(parts, name, mime) {
+      var url = URL.createObjectURL(new Blob(parts, { type: mime || 'application/octet-stream' }));
+      var a = document.createElement('a'); a.href = url; a.download = name || 'download'; a.style.display = 'none'; document.body.appendChild(a); a.click();
+      setTimeout(function () { a.remove(); URL.revokeObjectURL(url); }, 1500);
+    }
+    function download(produto, btn, card) {
+      if (btn.disabled) return;
+      btn.disabled = true; var label = btn.textContent; btn.textContent = '⏳ Preparando…';
+      var bar = document.createElement('div'); bar.className = 'bar'; var fill = document.createElement('i'); bar.appendChild(fill); card.appendChild(bar);
+      var done = function () { btn.disabled = false; btn.textContent = label; bar.remove(); };
+      call('lic_baixar', { produto: produto, ip: '' }).then(function (d) {
+        if (!d.ok) { msg('a-msg', say(d)); done(); return; }
+        if (d.url && !d.seguro) { window.open(d.url, '_blank', 'noopener'); done(); return; }
+        var parts = [];
+        function next(i) {
+          if (i >= d.partes) return Promise.resolve();
+          btn.textContent = '⏳ Baixando ' + Math.round(i / d.partes * 100) + '%'; fill.style.width = Math.round(i / d.partes * 100) + '%';
+          return call('lic_chunk', { ticket: d.ticket, indice: i }).then(function (c) { if (!c.ok) throw new Error(say(c)); return part(c.dados, c.sha256); }).then(function (by) { parts.push(by); return next(i + 1); });
+        }
+        var first = d.dados ? part(d.dados, d.sha256).then(function (by) { parts.push(by); }) : next(0);
+        return first.then(function () { fill.style.width = '100%'; save(parts, d.nomeArquivo, d.mimeType); msg('a-msg', 'Download concluído!', 'ok'); done(); });
+      }).catch(function (e) { msg('a-msg', e.message || 'Erro no download.'); done(); });
+    }
+
+    $('p-go').onclick = function () {
+      call('lic_alterar_senha', { senhaAtual: $('p-atual').value, novaSenha: $('p-nova').value }).then(function (d) {
+        msg('p-msg', say(d), d.ok ? 'ok' : ''); if (d.ok) { $('p-atual').value = ''; $('p-nova').value = ''; logout(true); toast('Senha alterada. Entre novamente.'); }
+      });
+    };
+
+    /* ---------- início ---------- */
+    if (!/^https:\/\/script\.google\.com\/.+\/exec$/.test(api)) { needConfig(); return; }
+    loadCatalog();
+    if (location.hash === '#esqueci') { tab('area'); show('forgot-box', true); }
+    var retorno = new URLSearchParams(location.search).get('compra');
+    var pend = null; try { pend = JSON.parse(localStorage.getItem('chPendente') || 'null'); } catch (_) {}
+    if (retorno && /^[A-Za-z0-9]{10,40}$/.test(retorno)) { show('box-form', false); showWait(retorno, (pend && pend.email) || '', 'cartao'); history.replaceState(null, '', location.pathname); }
+    if (token) { tab('area'); loadArea(); }
+  })();
+  </script>
+</body>
+</html>
