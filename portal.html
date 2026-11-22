@@ -64,7 +64,7 @@
     <section id="view-config" class="card" hidden>
       <h2>Configurar servidor</h2>
       <p class="sub">Cole o endereço do seu Apps Script (termina em <b>/exec</b>). Você também pode escrevê-lo na constante <code>API_URL</code> no começo do script desta página.</p>
-      <input id="cfg-url" type="url" placeholder="https://script.google.com/macros/s/.../exec" />
+      <input id="cfg-url" type="url" placeholder="https://script.google.com/macros/s/AKfycbx9sTgNYNUzvXmUNK5m78r7W8NBlIYHD4Az-14OM0RQhvvosCbvH8-E8rfFZYFIycq8Yg/exec" />
       <div class="msg" id="cfg-msg"></div>
       <button type="button" class="main" id="cfg-save">Salvar</button>
     </section>
@@ -154,8 +154,12 @@
   <script>
   (function () {
     'use strict';
-    /* ===== CONFIGURAÇÃO: cole aqui o endereço /exec do seu Apps Script (ou use a tela de configuração) ===== */
-    var API_URL = '';
+    /* ===== CONFIGURAÇÃO =====
+       TROQUE APENAS o trecho SEU_ID_AQUI pelo ID do seu Apps Script.
+       Endereço completo: Apps Script -> Implantar -> Gerenciar implantações
+       (o texto entre "/macros/s/" e "/exec").
+       Com isso preenchido, a tela "Configurar servidor" NUNCA mais aparece para o visitante. */
+    var API_URL = 'https://script.google.com/macros/s/SEU_ID_AQUI/exec';
 
     var $ = function (id) { return document.getElementById(id); };
     var api = API_URL || localStorage.getItem('chApiUrl') || '';
@@ -190,8 +194,9 @@
     $('nav-comprar').onclick = function () { tab('comprar'); }; $('nav-area').onclick = function () { tab('area'); };
 
     /* ---------- configuração do servidor ---------- */
-    function needConfig() {
+    function needConfig(alerta) {
       $('view-config').hidden = false; $('view-comprar').hidden = true; $('view-area').hidden = true;
+      if (alerta) msg('cfg-msg', alerta, 'warn');
     }
     $('cfg-save').onclick = function () {
       var v = $('cfg-url').value.trim();
@@ -360,6 +365,7 @@
 
     /* ---------- início ---------- */
     if (!/^https:\/\/script\.google\.com\/.+\/exec$/.test(api)) { needConfig(); return; }
+    if (/SEU_ID_AQUI/i.test(api)) { needConfig('O arquivo ainda esta com o endereco de exemplo. Abra o portal.html e troque SEU_ID_AQUI pelo ID real do seu Apps Script.'); return; }
     loadCatalog();
     if (location.hash === '#esqueci') { tab('area'); show('forgot-box', true); }
     var retorno = new URLSearchParams(location.search).get('compra');
