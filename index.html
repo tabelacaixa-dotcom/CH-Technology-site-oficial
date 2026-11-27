@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="soft-ui" style="--bg-main: #fcf5f3; --bg-header: rgba(252,245,243,0.95); --bg-card: #ffffff; --bg-card-glass: rgba(255,255,255,0.88); --bg-input: rgba(252,245,243,0.72); --text-main: #b07f02; --text-muted: #3a1d63; --border-subtle: rgba(15, 23, 42, 0.12); --neon-1: #d03411; --neon-2: #916512; --neon-3: #db9214; --neon-1-glow: rgba(208,52,17,0.45); --neon-2-glow: rgba(145,101,18,0.45); --neon-3-glow: rgba(219,146,20,0.45); --logo-size: 450px;"><head>
-
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -461,6 +459,10 @@
     .ch-btn-row { display:flex; gap:8px; flex-wrap:wrap; }
     .ch-btn-ghost { padding:9px 14px; border-radius:12px; background:transparent; color:var(--neon-1); font-weight:700; font-size:12px; cursor:pointer; border:1px solid color-mix(in srgb, var(--neon-1) 40%, transparent); }
     .ch-btn-danger { color:#f87171; border-color:rgba(248,113,113,.45); }
+    /* [V10] Banner "Crie uma senha forte no seu perfil" na tela principal da loja. */
+    #ch-senha-banner { display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; padding:13px 16px; border-radius:16px; border:1.5px solid rgba(251,191,36,.55); background:rgba(251,191,36,.12); color:var(--text-main); font-size:13px; font-weight:600; }
+    #ch-senha-banner[hidden] { display:none; }
+    #ch-senha-banner .ch-senha-banner-btn { flex-shrink:0; }
     .ch-small-btn { padding:9px 16px; border-radius:12px; font-size:12px; font-weight:800; cursor:pointer; }
     .ch-sub-title { font-size:13px; font-weight:800; margin:6px 0 0; color:var(--neon-1); }
     .ch-account-who { display:flex; align-items:center; gap:8px; flex-wrap:wrap; font-size:16px; }
@@ -492,6 +494,19 @@
     @media (min-width:768px) { .ch-free-tag, .ch-owned-tag { align-self:flex-end; } }
     .ch-dl-links { display:flex; flex-direction:column; gap:6px; }
     .ch-link { font-size:12px; font-weight:700; color:var(--neon-1); text-decoration:underline; overflow-wrap:anywhere; }
+
+    /* =========================================================
+       [V9] DESCONTOS, PONTOS, CUPONS E SENHA DE ACESSO
+       Reutiliza as cores/vidro existentes; nada aqui muda o v8.
+       ========================================================= */
+    .ch-discount-box { display:flex; flex-direction:column; gap:8px; padding:12px; border-radius:14px; border:1px solid var(--border-subtle); background:var(--bg-input); }
+    .ch-discount-row { display:flex; flex-direction:column; gap:8px; }
+    .ch-discount-summary { font-size:13px; line-height:1.5; }
+    .ch-discount-summary b { color:var(--neon-3); }
+    .ch-points-box { display:flex; flex-direction:column; gap:10px; padding:12px; border-radius:14px; border:1px solid var(--border-subtle); background:var(--bg-input); }
+    .ch-coupon-row { display:flex; align-items:center; gap:8px; flex-wrap:wrap; padding:8px 10px; border-radius:10px; border:1px solid var(--border-subtle); background:var(--bg-input); font-size:13px; overflow-wrap:anywhere; }
+    .ch-access-once { display:flex; flex-direction:column; gap:8px; padding:12px; border-radius:14px; border:1px solid rgba(251,191,36,.5); background:rgba(251,191,36,.08); }
+    .ch-access-once input { font-family:ui-monospace,monospace; font-weight:800; letter-spacing:1px; text-align:center; }
 
     /* =========================================================
        [NOVO] EFEITOS DOS TEMAS + CAMPOS DE LINK DE MÍDIA
@@ -588,7 +603,7 @@
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
     }
   </style>
-<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.pointer-events-auto{pointer-events:auto}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.inset-0{inset:0px}.bottom-4{bottom:1rem}.left-3{left:0.75rem}.right-4{right:1rem}.top-0{top:0px}.top-2\.5{top:0.625rem}.z-10{z-index:10}.z-20{z-index:20}.z-\[100\]{z-index:100}.z-\[110\]{z-index:110}.z-\[120\]{z-index:120}.z-\[20\]{z-index:20}.z-\[2\]{z-index:2}.mx-auto{margin-left:auto;margin-right:auto}.my-4{margin-top:1rem;margin-bottom:1rem}.my-\[-24px\]{margin-top:-24px;margin-bottom:-24px}.mb-1{margin-bottom:0.25rem}.mb-1\.5{margin-bottom:0.375rem}.mb-3{margin-bottom:0.75rem}.mt-1{margin-top:0.25rem}.mt-14{margin-top:3.5rem}.mt-3{margin-top:0.75rem}.ml-1\.5{margin-left:0.375rem}.ml-auto{margin-left:auto}.mt-0\.5{margin-top:0.125rem}.line-clamp-2{overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2}.block{display:block}.inline-block{display:inline-block}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.hidden{display:none}.h-10{height:2.5rem}.h-11{height:2.75rem}.h-12{height:3rem}.h-4{height:1rem}.h-7{height:1.75rem}.h-16{height:4rem}.h-5{height:1.25rem}.h-20{height:5rem}.h-52{height:13rem}.max-h-\[82vh\]{max-height:82vh}.min-h-\[240px\]{min-height:240px}.w-10{width:2.5rem}.w-12{width:3rem}.w-4{width:1rem}.w-7{width:1.75rem}.w-auto{width:auto}.w-fit{width:-moz-fit-content;width:fit-content}.w-full{width:100%}.w-11{width:2.75rem}.w-16{width:4rem}.w-5{width:1.25rem}.w-20{width:5rem}.min-w-\[120px\]{min-width:120px}.min-w-\[220px\]{min-width:220px}.min-w-0{min-width:0px}.max-w-2xl{max-width:42rem}.max-w-4xl{max-width:56rem}.max-w-5xl{max-width:64rem}.max-w-7xl{max-width:80rem}.max-w-\[110px\]{max-width:110px}.max-w-\[155px\]{max-width:155px}.max-w-\[90vw\]{max-width:90vw}.flex-1{flex:1 1 0%}.shrink-0{flex-shrink:0}.flex-grow{flex-grow:1}.cursor-pointer{cursor:pointer}.cursor-zoom-in{cursor:zoom-in}.select-none{-webkit-user-select:none;user-select:none}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-end{align-items:flex-end}.items-center{align-items:center}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1\.5{gap:0.375rem}.gap-2{gap:0.5rem}.gap-2\.5{gap:0.625rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-5{gap:1.25rem}.gap-6{gap:1.5rem}.gap-x-6{column-gap:1.5rem}.gap-y-3{row-gap:0.75rem}.space-y-1 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.25rem * var(--tw-space-y-reverse))}.space-y-12 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(3rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(3rem * var(--tw-space-y-reverse))}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.25rem * var(--tw-space-y-reverse))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.space-y-8 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(2rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(2rem * var(--tw-space-y-reverse))}.space-y-2\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.625rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.625rem * var(--tw-space-y-reverse))}.space-y-1\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.375rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.375rem * var(--tw-space-y-reverse))}.self-end{align-self:flex-end}.overflow-hidden{overflow:hidden}.truncate{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.whitespace-nowrap{white-space:nowrap}.whitespace-pre-line{white-space:pre-line}.break-words{overflow-wrap:break-word}.rounded{border-radius:0.25rem}.rounded-2xl{border-radius:1rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-md{border-radius:0.375rem}.rounded-xl{border-radius:0.75rem}.rounded-3xl{border-radius:1.5rem}.border{border-width:1px}.border-0{border-width:0px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-l-4{border-left-width:4px}.border-cyan-500\/30{border-color:rgb(6 182 212 / 0.3)}.border-purple-500\/30{border-color:rgb(168 85 247 / 0.3)}.border-purple-500\/35{border-color:rgb(168 85 247 / 0.35)}.border-slate-600{--tw-border-opacity:1;border-color:rgb(71 85 105 / var(--tw-border-opacity, 1))}.border-white\/20{border-color:rgb(255 255 255 / 0.2)}.bg-black\/90{background-color:rgb(0 0 0 / 0.9)}.bg-purple-500\/10{background-color:rgb(168 85 247 / 0.1)}.bg-purple-500\/15{background-color:rgb(168 85 247 / 0.15)}.bg-purple-500\/20{background-color:rgb(168 85 247 / 0.2)}.bg-purple-600{--tw-bg-opacity:1;background-color:rgb(147 51 234 / var(--tw-bg-opacity, 1))}.bg-slate-800{--tw-bg-opacity:1;background-color:rgb(30 41 59 / var(--tw-bg-opacity, 1))}.bg-transparent{background-color:transparent}.bg-red-500\/20{background-color:rgb(239 68 68 / 0.2)}.object-contain{object-fit:contain}.object-cover{object-fit:cover}.p-1{padding:0.25rem}.p-2\.5{padding:0.625rem}.p-3{padding:0.75rem}.p-3\.5{padding:0.875rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.p-1\.5{padding:0.375rem}.p-2{padding:0.5rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-2\.5{padding-left:0.625rem;padding-right:0.625rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-3\.5{padding-left:0.875rem;padding-right:0.875rem}.px-4{padding-left:1rem;padding-right:1rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-0\.5{padding-top:0.125rem;padding-bottom:0.125rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-1\.5{padding-top:0.375rem;padding-bottom:0.375rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.py-7{padding-top:1.75rem;padding-bottom:1.75rem}.px-1\.5{padding-left:0.375rem;padding-right:0.375rem}.pb-3{padding-bottom:0.75rem}.pb-4{padding-bottom:1rem}.pb-5{padding-bottom:1.25rem}.pt-1{padding-top:0.25rem}.pt-2{padding-top:0.5rem}.pt-3{padding-top:0.75rem}.pt-5{padding-top:1.25rem}.text-left{text-align:left}.text-center{text-align:center}.font-mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.text-\[9px\]{font-size:9px}.font-black{font-weight:900}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.leading-none{line-height:1}.leading-relaxed{line-height:1.625}.leading-tight{line-height:1.25}.leading-snug{line-height:1.375}.tracking-tight{letter-spacing:-0.025em}.tracking-wider{letter-spacing:0.05em}.tracking-widest{letter-spacing:0.1em}.text-blue-400{--tw-text-opacity:1;color:rgb(96 165 250 / var(--tw-text-opacity, 1))}.text-purple-300{--tw-text-opacity:1;color:rgb(216 180 254 / var(--tw-text-opacity, 1))}.text-purple-400{--tw-text-opacity:1;color:rgb(192 132 252 / var(--tw-text-opacity, 1))}.text-red-400{--tw-text-opacity:1;color:rgb(248 113 113 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.accent-cyan-400{accent-color:#22d3ee}.accent-purple-400{accent-color:#c084fc}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.backdrop-blur-md{--tw-backdrop-blur:blur(12px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.backdrop-blur-xl{--tw-backdrop-blur:blur(24px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-opacity{transition-property:opacity;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-300{transition-duration:300ms}.file\:mr-2::file-selector-button{margin-right:0.5rem}.file\:mr-3::file-selector-button{margin-right:0.75rem}.file\:rounded-lg::file-selector-button{border-radius:0.5rem}.file\:rounded-xl::file-selector-button{border-radius:0.75rem}.file\:border-0::file-selector-button{border-width:0px}.file\:bg-cyan-500\/20::file-selector-button{background-color:rgb(6 182 212 / 0.2)}.file\:bg-purple-500\/20::file-selector-button{background-color:rgb(168 85 247 / 0.2)}.file\:px-3::file-selector-button{padding-left:0.75rem;padding-right:0.75rem}.file\:px-4::file-selector-button{padding-left:1rem;padding-right:1rem}.file\:py-1\.5::file-selector-button{padding-top:0.375rem;padding-bottom:0.375rem}.file\:py-2::file-selector-button{padding-top:0.5rem;padding-bottom:0.5rem}.file\:text-xs::file-selector-button{font-size:0.75rem;line-height:1rem}.file\:font-bold::file-selector-button{font-weight:700}.file\:text-cyan-400::file-selector-button{--tw-text-opacity:1;color:rgb(34 211 238 / var(--tw-text-opacity, 1))}.file\:text-purple-300::file-selector-button{--tw-text-opacity:1;color:rgb(216 180 254 / var(--tw-text-opacity, 1))}.hover\:bg-purple-500:hover{--tw-bg-opacity:1;background-color:rgb(168 85 247 / var(--tw-bg-opacity, 1))}.hover\:bg-purple-500\/30:hover{background-color:rgb(168 85 247 / 0.3)}.hover\:bg-slate-700:hover{--tw-bg-opacity:1;background-color:rgb(51 65 85 / var(--tw-bg-opacity, 1))}.hover\:underline:hover{-webkit-text-decoration-line:underline;text-decoration-line:underline}.hover\:opacity-85:hover{opacity:0.85}.hover\:opacity-90:hover{opacity:0.9}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.group:hover .group-hover\:scale-105{--tw-scale-x:1.05;--tw-scale-y:1.05;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@media (min-width: 640px){.sm\:my-\[-34px\]{margin-top:-34px;margin-bottom:-34px}.sm\:h-24{height:6rem}.sm\:w-64{width:16rem}.sm\:w-72{width:18rem}.sm\:w-auto{width:auto}.sm\:w-24{width:6rem}.sm\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.sm\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.sm\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}.sm\:flex-row{flex-direction:row}.sm\:items-center{align-items:center}.sm\:gap-2{gap:0.5rem}.sm\:gap-5{gap:1.25rem}.sm\:p-5{padding:1.25rem}.sm\:p-8{padding:2rem}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:text-2xl{font-size:1.5rem;line-height:2rem}.sm\:text-3xl{font-size:1.875rem;line-height:2.25rem}.sm\:text-4xl{font-size:2.25rem;line-height:2.5rem}.sm\:text-5xl{font-size:3rem;line-height:1}.sm\:text-base{font-size:1rem;line-height:1.5rem}.sm\:text-sm{font-size:0.875rem;line-height:1.25rem}}@media (min-width: 768px){.md\:order-2{order:2}.md\:order-3{order:3}.md\:col-span-2{grid-column:span 2 / span 2}.md\:w-auto{width:auto}.md\:flex-1{flex:1 1 0%}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.md\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}.md\:flex-row{flex-direction:row}.md\:items-center{align-items:center}}@media (min-width: 1024px){.lg\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.lg\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.lg\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}.lg\:grid-cols-7{grid-template-columns:repeat(7, minmax(0, 1fr))}.lg\:flex-row{flex-direction:row}.lg\:items-center{align-items:center}.lg\:px-8{padding-left:2rem;padding-right:2rem}}</style></head>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.pointer-events-auto{pointer-events:auto}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.inset-0{inset:0px}.bottom-4{bottom:1rem}.left-3{left:0.75rem}.right-4{right:1rem}.top-0{top:0px}.top-2\.5{top:0.625rem}.z-10{z-index:10}.z-20{z-index:20}.z-\[100\]{z-index:100}.z-\[110\]{z-index:110}.z-\[120\]{z-index:120}.z-\[20\]{z-index:20}.z-\[2\]{z-index:2}.mx-auto{margin-left:auto;margin-right:auto}.my-4{margin-top:1rem;margin-bottom:1rem}.my-\[-24px\]{margin-top:-24px;margin-bottom:-24px}.mb-1{margin-bottom:0.25rem}.mb-1\.5{margin-bottom:0.375rem}.mb-3{margin-bottom:0.75rem}.mt-1{margin-top:0.25rem}.mt-14{margin-top:3.5rem}.mt-3{margin-top:0.75rem}.ml-1\.5{margin-left:0.375rem}.ml-auto{margin-left:auto}.mt-0\.5{margin-top:0.125rem}.line-clamp-2{overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2}.block{display:block}.inline-block{display:inline-block}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.hidden{display:none}.h-10{height:2.5rem}.h-11{height:2.75rem}.h-12{height:3rem}.h-4{height:1rem}.h-7{height:1.75rem}.h-16{height:4rem}.h-5{height:1.25rem}.max-h-\[82vh\]{max-height:82vh}.min-h-\[240px\]{min-height:240px}.w-10{width:2.5rem}.w-12{width:3rem}.w-4{width:1rem}.w-7{width:1.75rem}.w-auto{width:auto}.w-fit{width:-moz-fit-content;width:fit-content}.w-full{width:100%}.w-11{width:2.75rem}.w-16{width:4rem}.w-5{width:1.25rem}.min-w-\[120px\]{min-width:120px}.min-w-\[220px\]{min-width:220px}.min-w-0{min-width:0px}.max-w-2xl{max-width:42rem}.max-w-4xl{max-width:56rem}.max-w-5xl{max-width:64rem}.max-w-7xl{max-width:80rem}.max-w-\[110px\]{max-width:110px}.max-w-\[155px\]{max-width:155px}.max-w-\[90vw\]{max-width:90vw}.flex-1{flex:1 1 0%}.shrink-0{flex-shrink:0}.flex-grow{flex-grow:1}.cursor-pointer{cursor:pointer}.select-none{-webkit-user-select:none;user-select:none}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-end{align-items:flex-end}.items-center{align-items:center}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1\.5{gap:0.375rem}.gap-2{gap:0.5rem}.gap-2\.5{gap:0.625rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-5{gap:1.25rem}.gap-6{gap:1.5rem}.gap-x-6{column-gap:1.5rem}.gap-y-3{row-gap:0.75rem}.space-y-1 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.25rem * var(--tw-space-y-reverse))}.space-y-12 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(3rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(3rem * var(--tw-space-y-reverse))}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.25rem * var(--tw-space-y-reverse))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.space-y-8 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(2rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(2rem * var(--tw-space-y-reverse))}.space-y-2\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.625rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.625rem * var(--tw-space-y-reverse))}.self-end{align-self:flex-end}.overflow-hidden{overflow:hidden}.truncate{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.whitespace-nowrap{white-space:nowrap}.whitespace-pre-line{white-space:pre-line}.break-words{overflow-wrap:break-word}.rounded{border-radius:0.25rem}.rounded-2xl{border-radius:1rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-md{border-radius:0.375rem}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-0{border-width:0px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-l-4{border-left-width:4px}.border-cyan-500\/30{border-color:rgb(6 182 212 / 0.3)}.border-purple-500\/30{border-color:rgb(168 85 247 / 0.3)}.border-purple-500\/35{border-color:rgb(168 85 247 / 0.35)}.border-slate-600{--tw-border-opacity:1;border-color:rgb(71 85 105 / var(--tw-border-opacity, 1))}.border-white\/20{border-color:rgb(255 255 255 / 0.2)}.bg-black\/90{background-color:rgb(0 0 0 / 0.9)}.bg-purple-500\/10{background-color:rgb(168 85 247 / 0.1)}.bg-purple-500\/15{background-color:rgb(168 85 247 / 0.15)}.bg-purple-500\/20{background-color:rgb(168 85 247 / 0.2)}.bg-purple-600{--tw-bg-opacity:1;background-color:rgb(147 51 234 / var(--tw-bg-opacity, 1))}.bg-slate-800{--tw-bg-opacity:1;background-color:rgb(30 41 59 / var(--tw-bg-opacity, 1))}.bg-transparent{background-color:transparent}.bg-red-500\/20{background-color:rgb(239 68 68 / 0.2)}.object-contain{object-fit:contain}.p-1{padding:0.25rem}.p-2\.5{padding:0.625rem}.p-3{padding:0.75rem}.p-3\.5{padding:0.875rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.p-1\.5{padding:0.375rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-2\.5{padding-left:0.625rem;padding-right:0.625rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-3\.5{padding-left:0.875rem;padding-right:0.875rem}.px-4{padding-left:1rem;padding-right:1rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-0\.5{padding-top:0.125rem;padding-bottom:0.125rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-1\.5{padding-top:0.375rem;padding-bottom:0.375rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.py-7{padding-top:1.75rem;padding-bottom:1.75rem}.px-1\.5{padding-left:0.375rem;padding-right:0.375rem}.pb-3{padding-bottom:0.75rem}.pb-4{padding-bottom:1rem}.pb-5{padding-bottom:1.25rem}.pt-1{padding-top:0.25rem}.pt-2{padding-top:0.5rem}.pt-3{padding-top:0.75rem}.text-left{text-align:left}.text-center{text-align:center}.font-mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.text-\[9px\]{font-size:9px}.font-black{font-weight:900}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.leading-none{line-height:1}.leading-relaxed{line-height:1.625}.leading-tight{line-height:1.25}.leading-snug{line-height:1.375}.tracking-tight{letter-spacing:-0.025em}.tracking-wider{letter-spacing:0.05em}.tracking-widest{letter-spacing:0.1em}.text-blue-400{--tw-text-opacity:1;color:rgb(96 165 250 / var(--tw-text-opacity, 1))}.text-purple-300{--tw-text-opacity:1;color:rgb(216 180 254 / var(--tw-text-opacity, 1))}.text-purple-400{--tw-text-opacity:1;color:rgb(192 132 252 / var(--tw-text-opacity, 1))}.text-red-400{--tw-text-opacity:1;color:rgb(248 113 113 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.accent-cyan-400{accent-color:#22d3ee}.accent-purple-400{accent-color:#c084fc}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.backdrop-blur-md{--tw-backdrop-blur:blur(12px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.backdrop-blur-xl{--tw-backdrop-blur:blur(24px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-opacity{transition-property:opacity;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-300{transition-duration:300ms}.file\:mr-2::file-selector-button{margin-right:0.5rem}.file\:mr-3::file-selector-button{margin-right:0.75rem}.file\:rounded-lg::file-selector-button{border-radius:0.5rem}.file\:rounded-xl::file-selector-button{border-radius:0.75rem}.file\:border-0::file-selector-button{border-width:0px}.file\:bg-cyan-500\/20::file-selector-button{background-color:rgb(6 182 212 / 0.2)}.file\:bg-purple-500\/20::file-selector-button{background-color:rgb(168 85 247 / 0.2)}.file\:px-3::file-selector-button{padding-left:0.75rem;padding-right:0.75rem}.file\:px-4::file-selector-button{padding-left:1rem;padding-right:1rem}.file\:py-1\.5::file-selector-button{padding-top:0.375rem;padding-bottom:0.375rem}.file\:py-2::file-selector-button{padding-top:0.5rem;padding-bottom:0.5rem}.file\:text-xs::file-selector-button{font-size:0.75rem;line-height:1rem}.file\:font-bold::file-selector-button{font-weight:700}.file\:text-cyan-400::file-selector-button{--tw-text-opacity:1;color:rgb(34 211 238 / var(--tw-text-opacity, 1))}.file\:text-purple-300::file-selector-button{--tw-text-opacity:1;color:rgb(216 180 254 / var(--tw-text-opacity, 1))}.hover\:bg-purple-500:hover{--tw-bg-opacity:1;background-color:rgb(168 85 247 / var(--tw-bg-opacity, 1))}.hover\:bg-purple-500\/30:hover{background-color:rgb(168 85 247 / 0.3)}.hover\:bg-slate-700:hover{--tw-bg-opacity:1;background-color:rgb(51 65 85 / var(--tw-bg-opacity, 1))}.hover\:underline:hover{-webkit-text-decoration-line:underline;text-decoration-line:underline}.hover\:opacity-85:hover{opacity:0.85}.hover\:opacity-90:hover{opacity:0.9}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}@media (min-width: 640px){.sm\:my-\[-34px\]{margin-top:-34px;margin-bottom:-34px}.sm\:w-64{width:16rem}.sm\:w-72{width:18rem}.sm\:w-auto{width:auto}.sm\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.sm\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.sm\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}.sm\:flex-row{flex-direction:row}.sm\:items-center{align-items:center}.sm\:gap-2{gap:0.5rem}.sm\:p-5{padding:1.25rem}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:text-2xl{font-size:1.5rem;line-height:2rem}.sm\:text-3xl{font-size:1.875rem;line-height:2.25rem}.sm\:text-4xl{font-size:2.25rem;line-height:2.5rem}.sm\:text-5xl{font-size:3rem;line-height:1}.sm\:text-base{font-size:1rem;line-height:1.5rem}.sm\:text-sm{font-size:0.875rem;line-height:1.25rem}}@media (min-width: 768px){.md\:order-2{order:2}.md\:order-3{order:3}.md\:col-span-2{grid-column:span 2 / span 2}.md\:w-auto{width:auto}.md\:flex-1{flex:1 1 0%}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.md\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}.md\:flex-row{flex-direction:row}}@media (min-width: 1024px){.lg\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.lg\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.lg\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}.lg\:grid-cols-7{grid-template-columns:repeat(7, minmax(0, 1fr))}.lg\:flex-row{flex-direction:row}.lg\:items-center{align-items:center}.lg\:px-8{padding-left:2rem;padding-right:2rem}}</style></head>
 <body>
 
   <!-- Estado Embutido Seguro (Preenchido automaticamente ao Exportar HTML Final) -->
@@ -652,7 +667,7 @@
         <div id="singularity-stage" class="singularity-stage">
           <!-- Trilha Superior (Vai para a esquerda atrás da logo) -->
           <div class="wave-viewport relative z-[2]">
-            <div id="wave-track-top" class="wave-track wave-track-top"><div data-open-app="UNIFICADO_941D2E1BF559C304F3EAD65689AA293D" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('UNIFICADO_941D2E1BF559C304F3EAD65689AA293D', 'inicio')" data-w-row="0" data-w-idx="0" style="animation-delay: 0s; transform: translate3d(0px, -2.9px, 0px) rotate(-0.81deg);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/13klD9oLnZ9OoiqygO1sIrPen4PXgwVyp" alt="Gestão Financeira" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.3.5</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">Gestão Financeira</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CH Technology | Gestor Inteligente — sua vida financeira inteira em um só lugar.</p></div><div data-open-app="CPU_CH_D70D862BF5464D7AA3255C57F30E7251" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('CPU_CH_D70D862BF5464D7AA3255C57F30E7251', 'inicio')" data-w-row="0" data-w-idx="1" style="animation-delay: -0.9s; transform: perspective(750px) translate3d(3.6px, -2.4px, 0px) rotate(-0.66deg) skewX(-0.98deg) scale(1.009, 0.983);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/1N1mY5hlvwio5mona3vrfQytxWtRSrxBs" alt="CPU CH" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.1.0</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">CPU CH</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CPU-CH — saiba tudo sobre o hardware do seu celular.</p></div><div data-open-app="UNIFICADO_941D2E1BF559C304F3EAD65689AA293D" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('UNIFICADO_941D2E1BF559C304F3EAD65689AA293D', 'inicio')" data-w-row="0" data-w-idx="2" style="animation-delay: -1.8s; transform: perspective(750px) translate3d(-1.3px, 1.1px, 0px) rotate(0.48deg) skewX(0.34deg) scale(1.023, 0.96);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/13klD9oLnZ9OoiqygO1sIrPen4PXgwVyp" alt="Gestão Financeira" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.3.5</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">Gestão Financeira</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CH Technology | Gestor Inteligente — sua vida financeira inteira em um só lugar.</p></div><div data-open-app="CPU_CH_D70D862BF5464D7AA3255C57F30E7251" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('CPU_CH_D70D862BF5464D7AA3255C57F30E7251', 'inicio')" data-w-row="0" data-w-idx="3" style="animation-delay: -2.7s; transform: perspective(750px) translate3d(-1.9px, -1.7px, 0px) rotate(1.04deg) skewX(0.52deg) scale(1.004, 0.993);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/1N1mY5hlvwio5mona3vrfQytxWtRSrxBs" alt="CPU CH" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.1.0</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">CPU CH</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CPU-CH — saiba tudo sobre o hardware do seu celular.</p></div><div data-open-app="UNIFICADO_941D2E1BF559C304F3EAD65689AA293D" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('UNIFICADO_941D2E1BF559C304F3EAD65689AA293D', 'inicio')" data-w-row="0" data-w-idx="4" style="animation-delay: -3.6s; transform: translate3d(0px, 0.4px, 0px) rotate(1deg);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/13klD9oLnZ9OoiqygO1sIrPen4PXgwVyp" alt="Gestão Financeira" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.3.5</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">Gestão Financeira</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CH Technology | Gestor Inteligente — sua vida financeira inteira em um só lugar.</p></div><div data-open-app="CPU_CH_D70D862BF5464D7AA3255C57F30E7251" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('CPU_CH_D70D862BF5464D7AA3255C57F30E7251', 'inicio')" data-w-row="0" data-w-idx="5" style="animation-delay: -4.5s; transform: translate3d(0px, 3.4px, 0px) rotate(0.74deg);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/1N1mY5hlvwio5mona3vrfQytxWtRSrxBs" alt="CPU CH" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.1.0</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">CPU CH</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CPU-CH — saiba tudo sobre o hardware do seu celular.</p></div><div data-open-app="UNIFICADO_941D2E1BF559C304F3EAD65689AA293D" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('UNIFICADO_941D2E1BF559C304F3EAD65689AA293D', 'inicio')" data-w-row="0" data-w-idx="6" style="animation-delay: 0s; transform: translate3d(0px, 4.9px, 0px) rotate(0.18deg);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/13klD9oLnZ9OoiqygO1sIrPen4PXgwVyp" alt="Gestão Financeira" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.3.5</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">Gestão Financeira</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CH Technology | Gestor Inteligente — sua vida financeira inteira em um só lugar.</p></div><div data-open-app="CPU_CH_D70D862BF5464D7AA3255C57F30E7251" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('CPU_CH_D70D862BF5464D7AA3255C57F30E7251', 'inicio')" data-w-row="0" data-w-idx="7" style="animation-delay: -0.9s; transform: translate3d(0px, 4.5px, 0px) rotate(-0.45deg);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/1N1mY5hlvwio5mona3vrfQytxWtRSrxBs" alt="CPU CH" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.1.0</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">CPU CH</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CPU-CH — saiba tudo sobre o hardware do seu celular.</p></div><div data-open-app="UNIFICADO_941D2E1BF559C304F3EAD65689AA293D" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('UNIFICADO_941D2E1BF559C304F3EAD65689AA293D', 'inicio')" data-w-row="0" data-w-idx="8" style="animation-delay: -1.8s; transform: translate3d(0px, 2.2px, 0px) rotate(-0.9deg);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/13klD9oLnZ9OoiqygO1sIrPen4PXgwVyp" alt="Gestão Financeira" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.3.5</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">Gestão Financeira</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CH Technology | Gestor Inteligente — sua vida financeira inteira em um só lugar.</p></div><div data-open-app="CPU_CH_D70D862BF5464D7AA3255C57F30E7251" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('CPU_CH_D70D862BF5464D7AA3255C57F30E7251', 'inicio')" data-w-row="0" data-w-idx="9" style="animation-delay: -2.7s; transform: translate3d(0px, -1px, 0px) rotate(-0.98deg);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/1N1mY5hlvwio5mona3vrfQytxWtRSrxBs" alt="CPU CH" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.1.0</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">CPU CH</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CPU-CH — saiba tudo sobre o hardware do seu celular.</p></div><div data-open-app="UNIFICADO_941D2E1BF559C304F3EAD65689AA293D" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('UNIFICADO_941D2E1BF559C304F3EAD65689AA293D', 'inicio')" data-w-row="0" data-w-idx="10" style="animation-delay: -3.6s; transform: translate3d(0px, -3.7px, 0px) rotate(-0.66deg);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/13klD9oLnZ9OoiqygO1sIrPen4PXgwVyp" alt="Gestão Financeira" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.3.5</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">Gestão Financeira</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CH Technology | Gestor Inteligente — sua vida financeira inteira em um só lugar.</p></div><div data-open-app="CPU_CH_D70D862BF5464D7AA3255C57F30E7251" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('CPU_CH_D70D862BF5464D7AA3255C57F30E7251', 'inicio')" data-w-row="0" data-w-idx="11" style="animation-delay: -4.5s; transform: translate3d(0px, -5px, 0px) rotate(-0.08deg);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/1N1mY5hlvwio5mona3vrfQytxWtRSrxBs" alt="CPU CH" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.1.0</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">CPU CH</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CPU-CH — saiba tudo sobre o hardware do seu celular.</p></div></div>
+            <div id="wave-track-top" class="wave-track wave-track-top"><div data-open-app="UNIFICADO_941D2E1BF559C304F3EAD65689AA293D" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('UNIFICADO_941D2E1BF559C304F3EAD65689AA293D', 'inicio')" data-w-row="0" data-w-idx="0" style="animation-delay: 0s; transform: translate3d(0px, -4.8px, 0px) rotate(0.29deg);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/13klD9oLnZ9OoiqygO1sIrPen4PXgwVyp" alt="Gestão Financeira" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.3.5</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">Gestão Financeira</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CH Technology | Gestor Inteligente — sua vida financeira inteira em um só lugar.</p></div><div data-open-app="CPU_CH_D70D862BF5464D7AA3255C57F30E7251" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('CPU_CH_D70D862BF5464D7AA3255C57F30E7251', 'inicio')" data-w-row="0" data-w-idx="1" style="animation-delay: -0.9s; transform: perspective(750px) translate3d(1.4px, -2.2px, 0px) rotate(0.67deg) skewX(-0.38deg) scale(1.003, 0.995);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/1N1mY5hlvwio5mona3vrfQytxWtRSrxBs" alt="CPU CH" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.1.0</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">CPU CH</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CPU-CH — saiba tudo sobre o hardware do seu celular.</p></div><div data-open-app="UNIFICADO_941D2E1BF559C304F3EAD65689AA293D" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('UNIFICADO_941D2E1BF559C304F3EAD65689AA293D', 'inicio')" data-w-row="0" data-w-idx="2" style="animation-delay: -1.8s; transform: perspective(750px) translate3d(0.2px, 4.4px, 0px) rotate(0.98deg) skewX(-0.06deg) scale(1.017, 0.97);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/13klD9oLnZ9OoiqygO1sIrPen4PXgwVyp" alt="Gestão Financeira" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.3.5</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">Gestão Financeira</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CH Technology | Gestor Inteligente — sua vida financeira inteira em um só lugar.</p></div><div data-open-app="CPU_CH_D70D862BF5464D7AA3255C57F30E7251" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('CPU_CH_D70D862BF5464D7AA3255C57F30E7251', 'inicio')" data-w-row="0" data-w-idx="3" style="animation-delay: -2.7s; transform: perspective(750px) translate3d(-1.9px, 4.2px, 0px) rotate(0.97deg) skewX(0.51deg) scale(1.004, 0.992);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/1N1mY5hlvwio5mona3vrfQytxWtRSrxBs" alt="CPU CH" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.1.0</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">CPU CH</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CPU-CH — saiba tudo sobre o hardware do seu celular.</p></div><div data-open-app="UNIFICADO_941D2E1BF559C304F3EAD65689AA293D" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('UNIFICADO_941D2E1BF559C304F3EAD65689AA293D', 'inicio')" data-w-row="0" data-w-idx="4" style="animation-delay: -3.6s; transform: translate3d(0px, 4.8px, 0px) rotate(0.24deg);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/13klD9oLnZ9OoiqygO1sIrPen4PXgwVyp" alt="Gestão Financeira" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.3.5</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">Gestão Financeira</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CH Technology | Gestor Inteligente — sua vida financeira inteira em um só lugar.</p></div><div data-open-app="CPU_CH_D70D862BF5464D7AA3255C57F30E7251" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('CPU_CH_D70D862BF5464D7AA3255C57F30E7251', 'inicio')" data-w-row="0" data-w-idx="5" style="animation-delay: -4.5s; transform: translate3d(0px, 4.6px, 0px) rotate(-0.39deg);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/1N1mY5hlvwio5mona3vrfQytxWtRSrxBs" alt="CPU CH" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.1.0</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">CPU CH</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CPU-CH — saiba tudo sobre o hardware do seu celular.</p></div><div data-open-app="UNIFICADO_941D2E1BF559C304F3EAD65689AA293D" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('UNIFICADO_941D2E1BF559C304F3EAD65689AA293D', 'inicio')" data-w-row="0" data-w-idx="6" style="animation-delay: 0s; transform: translate3d(0px, 2.5px, 0px) rotate(-0.87deg);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/13klD9oLnZ9OoiqygO1sIrPen4PXgwVyp" alt="Gestão Financeira" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.3.5</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">Gestão Financeira</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CH Technology | Gestor Inteligente — sua vida financeira inteira em um só lugar.</p></div><div data-open-app="CPU_CH_D70D862BF5464D7AA3255C57F30E7251" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('CPU_CH_D70D862BF5464D7AA3255C57F30E7251', 'inicio')" data-w-row="0" data-w-idx="7" style="animation-delay: -0.9s; transform: translate3d(0px, -0.7px, 0px) rotate(-0.99deg);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/1N1mY5hlvwio5mona3vrfQytxWtRSrxBs" alt="CPU CH" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.1.0</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">CPU CH</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CPU-CH — saiba tudo sobre o hardware do seu celular.</p></div><div data-open-app="UNIFICADO_941D2E1BF559C304F3EAD65689AA293D" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('UNIFICADO_941D2E1BF559C304F3EAD65689AA293D', 'inicio')" data-w-row="0" data-w-idx="8" style="animation-delay: -1.8s; transform: translate3d(0px, -3.5px, 0px) rotate(-0.71deg);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/13klD9oLnZ9OoiqygO1sIrPen4PXgwVyp" alt="Gestão Financeira" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.3.5</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">Gestão Financeira</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CH Technology | Gestor Inteligente — sua vida financeira inteira em um só lugar.</p></div><div data-open-app="CPU_CH_D70D862BF5464D7AA3255C57F30E7251" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('CPU_CH_D70D862BF5464D7AA3255C57F30E7251', 'inicio')" data-w-row="0" data-w-idx="9" style="animation-delay: -2.7s; transform: translate3d(0px, -5px, 0px) rotate(-0.14deg);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/1N1mY5hlvwio5mona3vrfQytxWtRSrxBs" alt="CPU CH" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.1.0</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">CPU CH</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CPU-CH — saiba tudo sobre o hardware do seu celular.</p></div><div data-open-app="UNIFICADO_941D2E1BF559C304F3EAD65689AA293D" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('UNIFICADO_941D2E1BF559C304F3EAD65689AA293D', 'inicio')" data-w-row="0" data-w-idx="10" style="animation-delay: -3.6s; transform: translate3d(0px, -4.4px, 0px) rotate(0.49deg);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/13klD9oLnZ9OoiqygO1sIrPen4PXgwVyp" alt="Gestão Financeira" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.3.5</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">Gestão Financeira</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CH Technology | Gestor Inteligente — sua vida financeira inteira em um só lugar.</p></div><div data-open-app="CPU_CH_D70D862BF5464D7AA3255C57F30E7251" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('CPU_CH_D70D862BF5464D7AA3255C57F30E7251', 'inicio')" data-w-row="0" data-w-idx="11" style="animation-delay: -4.5s; transform: translate3d(0px, -2px, 0px) rotate(0.92deg);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/1N1mY5hlvwio5mona3vrfQytxWtRSrxBs" alt="CPU CH" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.1.0</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">CPU CH</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CPU-CH — saiba tudo sobre o hardware do seu celular.</p></div></div>
           </div>
 
           <!-- Aura Radial Localizada APENAS atrás da Logo Central -->
@@ -665,7 +680,7 @@
 
           <!-- Trilha Inferior (Vai para a direita atrás da logo) -->
           <div class="wave-viewport relative z-[2]">
-            <div id="wave-track-bottom" class="wave-track wave-track-bottom"><div data-open-app="CPU_CH_D70D862BF5464D7AA3255C57F30E7251" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('CPU_CH_D70D862BF5464D7AA3255C57F30E7251', 'inicio')" data-w-row="2" data-w-idx="0" style="animation-delay: -1.8s; transform: translate3d(0px, 1.4px, 0px) rotate(0.96deg);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/1N1mY5hlvwio5mona3vrfQytxWtRSrxBs" alt="CPU CH" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.1.0</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">CPU CH</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CPU-CH — saiba tudo sobre o hardware do seu celular.</p></div><div data-open-app="UNIFICADO_941D2E1BF559C304F3EAD65689AA293D" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('UNIFICADO_941D2E1BF559C304F3EAD65689AA293D', 'inicio')" data-w-row="2" data-w-idx="1" style="animation-delay: -2.7s; transform: translate3d(0px, 4px, 0px) rotate(0.59deg);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/13klD9oLnZ9OoiqygO1sIrPen4PXgwVyp" alt="Gestão Financeira" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.3.5</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">Gestão Financeira</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CH Technology | Gestor Inteligente — sua vida financeira inteira em um só lugar.</p></div><div data-open-app="CPU_CH_D70D862BF5464D7AA3255C57F30E7251" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('CPU_CH_D70D862BF5464D7AA3255C57F30E7251', 'inicio')" data-w-row="2" data-w-idx="2" style="animation-delay: -3.6s; transform: translate3d(0px, 5px, 0px) rotate(-0.02deg);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/1N1mY5hlvwio5mona3vrfQytxWtRSrxBs" alt="CPU CH" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.1.0</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">CPU CH</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CPU-CH — saiba tudo sobre o hardware do seu celular.</p></div><div data-open-app="UNIFICADO_941D2E1BF559C304F3EAD65689AA293D" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('UNIFICADO_941D2E1BF559C304F3EAD65689AA293D', 'inicio')" data-w-row="2" data-w-idx="3" style="animation-delay: -4.5s; transform: translate3d(0px, 3.9px, 0px) rotate(-0.62deg);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/13klD9oLnZ9OoiqygO1sIrPen4PXgwVyp" alt="Gestão Financeira" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.3.5</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">Gestão Financeira</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CH Technology | Gestor Inteligente — sua vida financeira inteira em um só lugar.</p></div><div data-open-app="CPU_CH_D70D862BF5464D7AA3255C57F30E7251" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('CPU_CH_D70D862BF5464D7AA3255C57F30E7251', 'inicio')" data-w-row="2" data-w-idx="4" style="animation-delay: 0s; transform: perspective(750px) translate3d(4.3px, -2.7px, 0px) rotate(-1.4deg) skewX(-1.15deg) scale(1.016, 0.972);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/1N1mY5hlvwio5mona3vrfQytxWtRSrxBs" alt="CPU CH" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.1.0</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">CPU CH</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CPU-CH — saiba tudo sobre o hardware do seu celular.</p></div><div data-open-app="UNIFICADO_941D2E1BF559C304F3EAD65689AA293D" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('UNIFICADO_941D2E1BF559C304F3EAD65689AA293D', 'inicio')" data-w-row="2" data-w-idx="5" style="animation-delay: -0.9s; transform: perspective(750px) translate3d(-3.4px, -7.2px, 0px) rotate(-0.58deg) skewX(0.92deg) scale(1.021, 0.963);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/13klD9oLnZ9OoiqygO1sIrPen4PXgwVyp" alt="Gestão Financeira" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.3.5</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">Gestão Financeira</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CH Technology | Gestor Inteligente — sua vida financeira inteira em um só lugar.</p></div><div data-open-app="CPU_CH_D70D862BF5464D7AA3255C57F30E7251" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('CPU_CH_D70D862BF5464D7AA3255C57F30E7251', 'inicio')" data-w-row="2" data-w-idx="6" style="animation-delay: -1.8s; transform: perspective(750px) translate3d(-0.3px, -4.5px, 0px) rotate(-0.47deg) skewX(0.09deg) scale(1.001, 0.999);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/1N1mY5hlvwio5mona3vrfQytxWtRSrxBs" alt="CPU CH" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.1.0</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">CPU CH</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CPU-CH — saiba tudo sobre o hardware do seu celular.</p></div><div data-open-app="UNIFICADO_941D2E1BF559C304F3EAD65689AA293D" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('UNIFICADO_941D2E1BF559C304F3EAD65689AA293D', 'inicio')" data-w-row="2" data-w-idx="7" style="animation-delay: -2.7s; transform: translate3d(0px, -5px, 0px) rotate(0.12deg);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/13klD9oLnZ9OoiqygO1sIrPen4PXgwVyp" alt="Gestão Financeira" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.3.5</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">Gestão Financeira</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CH Technology | Gestor Inteligente — sua vida financeira inteira em um só lugar.</p></div><div data-open-app="CPU_CH_D70D862BF5464D7AA3255C57F30E7251" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('CPU_CH_D70D862BF5464D7AA3255C57F30E7251', 'inicio')" data-w-row="2" data-w-idx="8" style="animation-delay: -3.6s; transform: translate3d(0px, -3.6px, 0px) rotate(0.7deg);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/1N1mY5hlvwio5mona3vrfQytxWtRSrxBs" alt="CPU CH" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.1.0</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">CPU CH</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CPU-CH — saiba tudo sobre o hardware do seu celular.</p></div><div data-open-app="UNIFICADO_941D2E1BF559C304F3EAD65689AA293D" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('UNIFICADO_941D2E1BF559C304F3EAD65689AA293D', 'inicio')" data-w-row="2" data-w-idx="9" style="animation-delay: -4.5s; transform: translate3d(0px, -0.7px, 0px) rotate(0.99deg);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/13klD9oLnZ9OoiqygO1sIrPen4PXgwVyp" alt="Gestão Financeira" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.3.5</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">Gestão Financeira</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CH Technology | Gestor Inteligente — sua vida financeira inteira em um só lugar.</p></div><div data-open-app="CPU_CH_D70D862BF5464D7AA3255C57F30E7251" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('CPU_CH_D70D862BF5464D7AA3255C57F30E7251', 'inicio')" data-w-row="2" data-w-idx="10" style="animation-delay: 0s; transform: translate3d(0px, 2.4px, 0px) rotate(0.88deg);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/1N1mY5hlvwio5mona3vrfQytxWtRSrxBs" alt="CPU CH" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.1.0</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">CPU CH</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CPU-CH — saiba tudo sobre o hardware do seu celular.</p></div><div data-open-app="UNIFICADO_941D2E1BF559C304F3EAD65689AA293D" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('UNIFICADO_941D2E1BF559C304F3EAD65689AA293D', 'inicio')" data-w-row="2" data-w-idx="11" style="animation-delay: -0.9s; transform: translate3d(0px, 4.6px, 0px) rotate(0.41deg);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/13klD9oLnZ9OoiqygO1sIrPen4PXgwVyp" alt="Gestão Financeira" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.3.5</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">Gestão Financeira</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CH Technology | Gestor Inteligente — sua vida financeira inteira em um só lugar.</p></div></div>
+            <div id="wave-track-bottom" class="wave-track wave-track-bottom"><div data-open-app="CPU_CH_D70D862BF5464D7AA3255C57F30E7251" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('CPU_CH_D70D862BF5464D7AA3255C57F30E7251', 'inicio')" data-w-row="2" data-w-idx="0" style="animation-delay: -1.8s; transform: translate3d(0px, 5px, 0px) rotate(0.05deg);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/1N1mY5hlvwio5mona3vrfQytxWtRSrxBs" alt="CPU CH" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.1.0</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">CPU CH</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CPU-CH — saiba tudo sobre o hardware do seu celular.</p></div><div data-open-app="UNIFICADO_941D2E1BF559C304F3EAD65689AA293D" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('UNIFICADO_941D2E1BF559C304F3EAD65689AA293D', 'inicio')" data-w-row="2" data-w-idx="1" style="animation-delay: -2.7s; transform: translate3d(0px, 4.1px, 0px) rotate(-0.57deg);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/13klD9oLnZ9OoiqygO1sIrPen4PXgwVyp" alt="Gestão Financeira" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.3.5</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">Gestão Financeira</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CH Technology | Gestor Inteligente — sua vida financeira inteira em um só lugar.</p></div><div data-open-app="CPU_CH_D70D862BF5464D7AA3255C57F30E7251" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('CPU_CH_D70D862BF5464D7AA3255C57F30E7251', 'inicio')" data-w-row="2" data-w-idx="2" style="animation-delay: -3.6s; transform: translate3d(0px, 1.6px, 0px) rotate(-0.95deg);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/1N1mY5hlvwio5mona3vrfQytxWtRSrxBs" alt="CPU CH" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.1.0</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">CPU CH</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CPU-CH — saiba tudo sobre o hardware do seu celular.</p></div><div data-open-app="UNIFICADO_941D2E1BF559C304F3EAD65689AA293D" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('UNIFICADO_941D2E1BF559C304F3EAD65689AA293D', 'inicio')" data-w-row="2" data-w-idx="3" style="animation-delay: -4.5s; transform: translate3d(0px, -1.6px, 0px) rotate(-0.95deg);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/13klD9oLnZ9OoiqygO1sIrPen4PXgwVyp" alt="Gestão Financeira" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.3.5</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">Gestão Financeira</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CH Technology | Gestor Inteligente — sua vida financeira inteira em um só lugar.</p></div><div data-open-app="CPU_CH_D70D862BF5464D7AA3255C57F30E7251" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('CPU_CH_D70D862BF5464D7AA3255C57F30E7251', 'inicio')" data-w-row="2" data-w-idx="4" style="animation-delay: 0s; transform: translate3d(0px, -4.2px, 0px) rotate(-0.55deg);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/1N1mY5hlvwio5mona3vrfQytxWtRSrxBs" alt="CPU CH" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.1.0</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">CPU CH</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CPU-CH — saiba tudo sobre o hardware do seu celular.</p></div><div data-open-app="UNIFICADO_941D2E1BF559C304F3EAD65689AA293D" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('UNIFICADO_941D2E1BF559C304F3EAD65689AA293D', 'inicio')" data-w-row="2" data-w-idx="5" style="animation-delay: -0.9s; transform: translate3d(0px, -5px, 0px) rotate(0.06deg);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/13klD9oLnZ9OoiqygO1sIrPen4PXgwVyp" alt="Gestão Financeira" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.3.5</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">Gestão Financeira</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CH Technology | Gestor Inteligente — sua vida financeira inteira em um só lugar.</p></div><div data-open-app="CPU_CH_D70D862BF5464D7AA3255C57F30E7251" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('CPU_CH_D70D862BF5464D7AA3255C57F30E7251', 'inicio')" data-w-row="2" data-w-idx="6" style="animation-delay: -1.8s; transform: perspective(750px) translate3d(1.1px, -4.3px, 0px) rotate(0.54deg) skewX(-0.29deg) scale(1.002, 0.996);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/1N1mY5hlvwio5mona3vrfQytxWtRSrxBs" alt="CPU CH" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.1.0</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">CPU CH</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CPU-CH — saiba tudo sobre o hardware do seu celular.</p></div><div data-open-app="UNIFICADO_941D2E1BF559C304F3EAD65689AA293D" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('UNIFICADO_941D2E1BF559C304F3EAD65689AA293D', 'inicio')" data-w-row="2" data-w-idx="7" style="animation-delay: -2.7s; transform: perspective(750px) translate3d(0.8px, -5.3px, 0px) rotate(0.9deg) skewX(-0.22deg) scale(1.017, 0.97);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/13klD9oLnZ9OoiqygO1sIrPen4PXgwVyp" alt="Gestão Financeira" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.3.5</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">Gestão Financeira</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CH Technology | Gestor Inteligente — sua vida financeira inteira em um só lugar.</p></div><div data-open-app="CPU_CH_D70D862BF5464D7AA3255C57F30E7251" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('CPU_CH_D70D862BF5464D7AA3255C57F30E7251', 'inicio')" data-w-row="2" data-w-idx="8" style="animation-delay: -3.6s; transform: perspective(750px) translate3d(-2.2px, 0.8px, 0px) rotate(1.12deg) skewX(0.58deg) scale(1.006, 0.99);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/1N1mY5hlvwio5mona3vrfQytxWtRSrxBs" alt="CPU CH" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.1.0</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">CPU CH</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CPU-CH — saiba tudo sobre o hardware do seu celular.</p></div><div data-open-app="UNIFICADO_941D2E1BF559C304F3EAD65689AA293D" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('UNIFICADO_941D2E1BF559C304F3EAD65689AA293D', 'inicio')" data-w-row="2" data-w-idx="9" style="animation-delay: -4.5s; transform: translate3d(0px, 4.4px, 0px) rotate(0.46deg);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/13klD9oLnZ9OoiqygO1sIrPen4PXgwVyp" alt="Gestão Financeira" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.3.5</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">Gestão Financeira</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CH Technology | Gestor Inteligente — sua vida financeira inteira em um só lugar.</p></div><div data-open-app="CPU_CH_D70D862BF5464D7AA3255C57F30E7251" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('CPU_CH_D70D862BF5464D7AA3255C57F30E7251', 'inicio')" data-w-row="2" data-w-idx="10" style="animation-delay: 0s; transform: translate3d(0px, 4.9px, 0px) rotate(-0.17deg);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/1N1mY5hlvwio5mona3vrfQytxWtRSrxBs" alt="CPU CH" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.1.0</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">CPU CH</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CPU-CH — saiba tudo sobre o hardware do seu celular.</p></div><div data-open-app="UNIFICADO_941D2E1BF559C304F3EAD65689AA293D" data-origin-tab="inicio" onclick="window.chApp &amp;&amp; window.chApp.openApp('UNIFICADO_941D2E1BF559C304F3EAD65689AA293D', 'inicio')" data-w-row="2" data-w-idx="11" style="animation-delay: -0.9s; transform: translate3d(0px, 3.4px, 0px) rotate(-0.73deg);" class="wave-app-card rounded-2xl p-3.5 flex flex-col justify-between gap-2 select-none"><div class="flex items-center gap-3"><img src="https://lh3.googleusercontent.com/d/13klD9oLnZ9OoiqygO1sIrPen4PXgwVyp" alt="Gestão Financeira" class="w-11 h-11 rounded-xl object-contain p-1 border shrink-0" style="background: var(--bg-input); border-color: var(--border-subtle);"><div class="min-w-0 flex-1"><div class="flex items-center gap-1.5 flex-wrap"><span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-mono t-badge">1.3.5</span><span class="inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold" style="background: color-mix(in srgb, var(--neon-2) 18%, transparent); color: var(--neon-2);">MOBILE</span></div><h3 class="text-sm font-bold t-text-main truncate mt-0.5">Gestão Financeira</h3></div></div><p class="text-xs t-text-muted line-clamp-2 leading-relaxed">CH Technology | Gestor Inteligente — sua vida financeira inteira em um só lugar.</p></div></div>
           </div>
         </div>
 
@@ -794,7 +809,9 @@
          ========================================================= -->
     <section id="panel-detalhes" class="tab-panel space-y-8">
       <div class="flex items-center justify-between flex-wrap gap-3">
-        <button type="button" id="btn-details-back" data-nav="mobile" onclick="window.chApp &amp;&amp; window.chApp.nav(this.getAttribute('data-nav') || 'download')" class="px-4 py-2 rounded-xl t-card hover:opacity-85 t-text-main text-sm font-semibold transition cursor-pointer">← Voltar para Apps Mobile</button>
+        <button type="button" id="btn-details-back" data-nav="download" onclick="window.chApp &amp;&amp; window.chApp.nav(this.getAttribute('data-nav') || 'download')" class="px-4 py-2 rounded-xl t-card hover:opacity-85 t-text-main text-sm font-semibold transition cursor-pointer">
+          ← Voltar para Programas
+        </button>
         <button type="button" data-nav="inicio" onclick="window.chApp &amp;&amp; window.chApp.nav('inicio')" class="text-sm t-text-muted hover:opacity-85 transition cursor-pointer">
           Ir para Início
         </button>
@@ -843,7 +860,7 @@
     </div>
   </footer>
 
-  <script id="ch-hub-update-config">var EMBEDDED_EXPORT = {"execUrl":"https://script.google.com/macros/s/AKfycbxq5V-clDrMc17t02N4LuIWePKDu5U3MYER9_rTDbYfWY-Ffop84ufOpAvktzGwWTaK/exec","version":"1.2.2","appIdB64":"SFVCXzQzRjA0Q0M3N0U5OUU1RThFOUMwREMzOEQ4N0Y1NkRB","encryptedAppId":{"iv":"6hEv9Z7DsHhrOMKc","ct":"bO+igopjdVGFmIn4Onozl+6F9rp2u8VPTjY3W0Wo5ScnTbKM8LXzgpukVWl3sNlAqp6WiQ=="}};</script>
+  <script id="ch-hub-update-config">var EMBEDDED_EXPORT = {"execUrl":"https://script.google.com/macros/s/AKfycbxq5V-clDrMc17t02N4LuIWePKDu5U3MYER9_rTDbYfWY-Ffop84ufOpAvktzGwWTaK/exec","version":"1.2.2","appIdB64":"SFVCXzQzRjA0Q0M3N0U5OUU1RThFOUMwREMzOEQ4N0Y1NkRB","encryptedAppId":{"iv":"47oUJy1vSTNMx5Cn","ct":"+zFBa3tFB43XCsVlKLnF8q7QWtxDn1WQUik94MKe5nVNZg/hAE/gCQ0TeOL1fXQ10tX/kw=="}};</script>
   <script id="ch-hub-update-script">
 /* ============================================================
    CH Technology Hub — Atualização pelo servidor (Dev)
@@ -969,6 +986,21 @@
     if (!lerAppId()) return null;
     return montarPayloadExport();
   };
+  // [V9] Expõe o AppId do Hub para o login do app: na Dev lê do localStorage;
+  // no HTML final descriptografa o ID embutido no EMBEDDED_EXPORT.
+  window.chHubGetAppId = async function () {
+    var id = lerAppId();
+    if (id) return id;
+    try {
+      var exp = (typeof EMBEDDED_EXPORT !== "undefined") ? EMBEDDED_EXPORT : null;
+      if (exp && exp.encryptedAppId && window.crypto && window.crypto.subtle) {
+        var d = await descriptografarId(exp.encryptedAppId);
+        if (d) return d;
+      }
+      if (exp && exp.appIdB64) { try { return decodeURIComponent(escape(atob(exp.appIdB64))); } catch (e) {} }
+    } catch (e) {}
+    return "";
+  };
   // [CORRIGIDO] Expõe o refresh dos campos Dev (ID/URL/versão) para o restore do backup
   // re-preencher os campos depois de restaurar (o init só roda no carregamento da página).
   window.chHubUpdateRefresh = aplicarConfiguracoesDev;
@@ -1011,6 +1043,12 @@
     return bytes + " B";
   }
   async function baixarArquivoViaServidor(execUrl, appId, nomePadrao, onProgress) {
+    // [V9] A atualização usa a PROVA criptografada temporária (2 min) emitida
+    // no login do app — a sessionId NÃO vai para o servidor de atualizações.
+    // Sem prova válida o servidor nega o download.
+    var provaDl = null;
+    try { if (window.chAppLogin && window.chAppLogin.getUpdateProof) provaDl = await window.chAppLogin.getUpdateProof(); } catch (e) {}
+    if (!provaDl) throw new Error("Sessão expirada. Entre de novo no aplicativo para baixar a atualização.");
     var partes = [], total = 1, bytesTotal = 0, nome = nomePadrao || "CH_Technology_Hub.apk", mime = "application/octet-stream", bytesBaixados = 0;
     for (var i = 0; i < total; i++) {
       var ok = false, ultimo = null;
@@ -1018,7 +1056,7 @@
         var timer = null;
         try {
           var ctrl = new AbortController(); timer = setTimeout(function () { ctrl.abort(); }, 60000);
-          var r = await fetch(execUrl + "?acao=baixar&app=" + encodeURIComponent(appId) + "&parte=" + i + "&_t=" + Date.now().toString(36), { cache: "no-store", signal: ctrl.signal });
+          var r = await fetch(execUrl + "?acao=baixar&app=" + encodeURIComponent(appId) + "&parte=" + i + "&email=" + encodeURIComponent(provaDl.email) + "&proof=" + encodeURIComponent(provaDl.proof) + "&appId=" + encodeURIComponent(provaDl.appId) + "&deviceId=" + encodeURIComponent(provaDl.deviceId) + "&_t=" + Date.now().toString(36), { cache: "no-store", signal: ctrl.signal });
           clearTimeout(timer); timer = null;
           if (!r.ok) throw new Error("HTTP " + r.status);
           var d = await r.json();
@@ -1052,7 +1090,12 @@
     return (async function () {
       try {
         var ctrl = new AbortController(); var timer = setTimeout(function () { ctrl.abort(); }, 12000);
-        var r = await fetch(execUrl + "?acao=link&app=" + encodeURIComponent(appId) + "&_t=" + Date.now().toString(36), { cache: "no-store", signal: ctrl.signal });
+        // [V9] O link direto também exige a prova temporária (2 min); sem ela
+        // nem tenta — o servidor negaria e o botão nem aparece.
+        var provaLink = null;
+        try { if (window.chAppLogin && window.chAppLogin.getUpdateProof) provaLink = await window.chAppLogin.getUpdateProof(); } catch (e) {}
+        if (!provaLink) return null;
+        var r = await fetch(execUrl + "?acao=link&app=" + encodeURIComponent(appId) + "&email=" + encodeURIComponent(provaLink.email) + "&proof=" + encodeURIComponent(provaLink.proof) + "&appId=" + encodeURIComponent(provaLink.appId) + "&deviceId=" + encodeURIComponent(provaLink.deviceId) + "&_t=" + Date.now().toString(36), { cache: "no-store", signal: ctrl.signal });
         clearTimeout(timer);
         if (!r.ok) return null;
         var d = await r.json();
@@ -1105,6 +1148,27 @@
       var progTexto = document.getElementById("ch-update-progtexto");
       var aviso = document.getElementById("ch-update-aviso");
       var caixa = document.getElementById("ch-update-links");
+      // [V9] O download exige a PROVA temporária (2 min). Se a prova expirou
+      // ou não existe, mostra o login de entrada de novo (appLogin) para emitir
+      // uma prova nova — o download é pedido logo após o login, dentro da
+      // janela de 2 min. Com prova válida, nada é perguntado aqui.
+      if (window.chAppLogin && window.chAppLogin.requireUpdateProof) {
+        try { await window.chAppLogin.requireUpdateProof(); }
+        catch (e) {
+          btnBaixar.disabled = false; btnBaixar.dataset.busy = "0"; btnBaixar.style.opacity = "1";
+          btnBaixar.textContent = "Baixar atualização";
+          if (progTexto) progTexto.textContent = "É preciso entrar com e-mail, código e senha para baixar a atualização.";
+          return;
+        }
+      } else if (window.chAppLogin && window.chAppLogin.requireAppLogin) {
+        try { await window.chAppLogin.requireAppLogin(); }
+        catch (e) {
+          btnBaixar.disabled = false; btnBaixar.dataset.busy = "0"; btnBaixar.style.opacity = "1";
+          btnBaixar.textContent = "Baixar atualização";
+          if (progTexto) progTexto.textContent = "É preciso entrar com e-mail, código e senha para baixar a atualização.";
+          return;
+        }
+      }
       if (prog) prog.style.display = "block";
       if (progTexto) progTexto.textContent = "Conectando ao servidor…";
       try {
@@ -1126,6 +1190,10 @@
         }
         if (aviso) aviso.textContent = "Depois de baixar, abra o arquivo para instalar a nova versão.";
       } catch (e) {
+        // [V9] Se o servidor disse que a sessão/prova acabou, apaga a sessão
+        // guardada: na próxima tentativa o login de entrada é pedido de novo.
+        var msgErroDl = String((e && e.message) || "").toLowerCase();
+        if ((msgErroDl.indexOf("sess") !== -1 || msgErroDl.indexOf("prova") !== -1) && window.chAppLogin && window.chAppLogin.clearSession) window.chAppLogin.clearSession();
         btnBaixar.disabled = false; btnBaixar.dataset.busy = "0"; btnBaixar.style.opacity = "1";
         btnBaixar.textContent = "Tentar baixar novamente";
         if (progTexto) progTexto.textContent = "Não foi possível baixar agora (" + (e && e.message ? e.message : "erro") + "). Verifique a conexão e tente de novo.";
@@ -2397,7 +2465,7 @@
          state, devConfig (execUrl + versão), appId, appIdBackup
          e as demais chaves do localStorage. Nada é perdido em silêncio.
          ========================================================= */
-      var BACKUP_EXTRA_KEYS = ['chAuthToken', 'chAuthUser', 'chPendingPurchase', 'chFxOff', 'chTechnologyBackgroundMusic', 'chTechnologyMusicVolume'];
+      var BACKUP_EXTRA_KEYS = ['chAuthToken', 'chAuthUser', 'chPendingPurchase', 'chFxOff', 'chTechnologyBackgroundMusic', 'chTechnologyMusicVolume', 'chDeviceId', 'chHubAppSession_v1'];
       function montarBackupCompleto() {
         var devCfg = null;
         try { devCfg = JSON.parse(localStorage.getItem('chHubDevConfig_v1') || 'null'); } catch (e) { devCfg = null; }
@@ -3557,6 +3625,8 @@
         clone.querySelectorAll('#ch-fx-canvas, #ch-fx-bg, .ch-fx-decor, #ch-fx-toggle').forEach(function (n) { n.remove(); }); // efeitos são recriados ao abrir o HTML final
         var cspBannerClone = clone.querySelector('#ch-csp-banner'); // faixa de aviso da CSP não vai para o HTML final
         if (cspBannerClone) cspBannerClone.remove();
+        var senhaBannerClone = clone.querySelector('#ch-senha-banner'); // [V10] o banner é recriado ao abrir conforme o `me`; não vai para o HTML final
+        if (senhaBannerClone) senhaBannerClone.remove();
         var overlayClone = clone.querySelector('#ch-auth-overlay');
         if (overlayClone) overlayClone.remove();
         clone.querySelectorAll('.ch-purchase-box').forEach(function (b) { b.innerHTML = ''; });
@@ -4656,7 +4726,10 @@
               clearSession();
               throw makeErr('Sua sessão expirou. Entre novamente.', 'auth_required');
             }
-            throw makeErr((d && d.error) || 'Erro no servidor.', d && d.error);
+            // [V9] Guarda a resposta completa no erro (ex.: faltaMinutos do AGUARDE_1H).
+            var er = makeErr((d && d.error) || 'Erro no servidor.', d && d.error);
+            er.data = d || null;
+            throw er;
           }
           return d;
         });
@@ -4688,7 +4761,40 @@
     }
     function canOpenDev() { return !backendUrl() || !!(user && user.isSupport); }
     function notify() {
+      atualizarBannerSenha(); // [V10] mostra/esconde o banner de senha forte
       updateHeader(); updateDevNav(); renderBoxes(); renderCommentArea(); renderComments();
+      refreshAdminCouponsIfVisible(); // [V9] atualiza a lista de cupons se a sub-aba estiver aberta
+    }
+    /* [V10] Banner "Crie uma senha forte no seu perfil" na tela principal da loja.
+       Um único elemento, criado uma vez e reutilizado: aparece quando o usuário
+       logado está com senha temporária (user.precisaTrocarSenha) e some quando a
+       troca de senha dá certo. Fica no topo do <main>, visível em todas as abas. */
+    var senhaBannerEl = null;
+    function atualizarBannerSenha() {
+      if (!senhaBannerEl) {
+        senhaBannerEl = el('div', '');
+        senhaBannerEl.id = 'ch-senha-banner';
+        senhaBannerEl.hidden = true;
+        senhaBannerEl.setAttribute('role', 'alert');
+        senhaBannerEl.appendChild(el('span', '', '🔑 Crie uma senha forte no seu perfil'));
+        var senhaBtn = el('button', 't-btn-primary ch-small-btn ch-senha-banner-btn', 'Trocar senha agora');
+        senhaBtn.type = 'button';
+        senhaBtn.addEventListener('click', function () {
+          viewAccount();
+          setTimeout(function () {
+            var t = document.getElementById('ch-senha-portal');
+            if (t && typeof t.scrollIntoView === 'function') t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            var firstPass = document.querySelector('#ch-auth-overlay input[type="password"]');
+            if (firstPass && typeof firstPass.focus === 'function') firstPass.focus();
+          }, 150);
+        });
+        senhaBannerEl.appendChild(senhaBtn);
+        var main = document.querySelector('main');
+        if (main && main.firstChild) main.insertBefore(senhaBannerEl, main.firstChild);
+        else if (main) main.appendChild(senhaBannerEl);
+        else document.body.insertBefore(senhaBannerEl, document.body.firstChild);
+      }
+      senhaBannerEl.hidden = !(user && user.precisaTrocarSenha);
     }
     function updateHeader() {
       var b = $('ch-auth-btn');
@@ -4705,7 +4811,7 @@
     /* ---------------------------------------------------------
        3) JANELA DE LOGIN (e-mail -> código -> sessão)
        --------------------------------------------------------- */
-    var overlay = null, titleEl = null, bodyEl = null, pendingLogin = null, cdTimer = null;
+    var overlay = null, titleEl = null, bodyEl = null, pendingLogin = null, cdTimer = null, pendingAppLogin = null;
 
     function ensureModal() {
       if (overlay) return;
@@ -4726,6 +4832,9 @@
       overlay.hidden = true; stopTimer();
       if (pendingLogin && !user) pendingLogin.reject(makeErr('cancelled', 'cancelled'));
       pendingLogin = null;
+      // [V9] Fechar a janela também cancela o login do app que estiver esperando.
+      if (pendingAppLogin) pendingAppLogin.reject(makeErr('cancelled', 'cancelled'));
+      pendingAppLogin = null;
     }
     function openModal() { ensureModal(); overlay.hidden = false; }
     function mkInput(type, placeholder, extra) {
@@ -4760,6 +4869,10 @@
       var err = el('div', 'ch-err'); err.setAttribute('role', 'alert');
       var btn = mkPrimary('Enviar código');
       form.appendChild(email); form.appendChild(name); form.appendChild(err); form.appendChild(btn);
+      // [V10] Criar conta (senha temporária): abre a tela 1 da criação.
+      var createBtn = mkGhost('Não tem senha? Criar conta');
+      createBtn.addEventListener('click', function () { viewCreateAccount(email.value.trim()); });
+      form.appendChild(createBtn);
       form.addEventListener('submit', function (ev) {
         ev.preventDefault();
         var val = email.value.trim();
@@ -4826,6 +4939,89 @@
       setTimeout(function () { code.focus(); }, 50);
     }
 
+    // [V10] Tela 1 da criação de conta: pedir o e-mail
+    function viewCreateAccount(prefill) {
+      ensureModal(); stopTimer();
+      titleEl.textContent = 'Criar conta';
+      bodyEl.textContent = '';
+      var form = el('form', 'ch-modal-form'); form.noValidate = true;
+      form.appendChild(el('p', 'ch-note', 'Vamos enviar um código de 6 dígitos E uma senha temporária para o seu e-mail. Depois você troca a senha no seu perfil.'));
+      var email = mkInput('email', 'seu@email.com', { autocomplete: 'email', inputmode: 'email', maxlength: '120', 'aria-label': 'Seu e-mail' });
+      if (prefill) email.value = prefill;
+      var err = el('div', 'ch-err'); err.setAttribute('role', 'alert');
+      var btn = mkPrimary('Criar conta e enviar código');
+      form.appendChild(email); form.appendChild(err); form.appendChild(btn);
+      var back = mkGhost('Já tenho senha — voltar ao login');
+      back.addEventListener('click', function () { viewEmail(email.value.trim()); });
+      form.appendChild(back);
+      form.addEventListener('submit', function (ev) {
+        ev.preventDefault();
+        var val = email.value.trim();
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val)) { err.textContent = 'Digite um e-mail válido.'; return; }
+        btn.disabled = true; btn.textContent = 'Enviando...'; err.textContent = '';
+        api('createAccount', { email: val }, true).then(function () {
+          viewCreateAccountCode(val);
+        }).catch(function (e) {
+          err.textContent = erroAmigavel(e); btn.disabled = false; btn.textContent = 'Criar conta e enviar código';
+        });
+      });
+      bodyEl.appendChild(form);
+      setTimeout(function () { email.focus(); }, 50);
+    }
+
+    // [V10] Tela 2 da criação de conta: código + senha temporária (mesmo padrão do viewCode)
+    function viewCreateAccountCode(email) {
+      stopTimer();
+      titleEl.textContent = 'Confirme sua conta';
+      bodyEl.textContent = '';
+      var form = el('form', 'ch-modal-form'); form.noValidate = true;
+      form.appendChild(el('p', 'ch-note', 'Confira o código e a senha temporária no e-mail (' + email + ').'));
+      var code = mkInput('text', '000000', { inputmode: 'numeric', maxlength: '6', autocomplete: 'one-time-code', 'aria-label': 'Código de verificação' });
+      code.className += ' ch-code-input';
+      var tempPass = mkInput('password', 'Senha temporária do e-mail', { autocomplete: 'current-password', 'aria-label': 'Senha temporária' });
+      var err = el('div', 'ch-err'); err.setAttribute('role', 'alert');
+      var btn = mkPrimary('Criar conta e entrar');
+      var row = el('div', 'ch-btn-row');
+      var resend = mkGhost('Reenviar'); var other = mkGhost('Usar outro e-mail');
+      row.appendChild(resend); row.appendChild(other);
+      form.appendChild(code); form.appendChild(tempPass); form.appendChild(err); form.appendChild(btn); form.appendChild(row);
+
+      var left = 60;
+      function tick() {
+        if (left > 0) { resend.disabled = true; resend.textContent = 'Reenviar em ' + left + 's'; left--; }
+        else { resend.disabled = false; resend.textContent = 'Reenviar'; stopTimer(); }
+      }
+      tick(); cdTimer = setInterval(tick, 1000);
+
+      resend.addEventListener('click', function () {
+        resend.disabled = true; err.textContent = '';
+        api('createAccount', { email: email }, true).then(function () {
+          toast('Novo código e nova senha temporária enviados.', 'success'); left = 60; stopTimer(); tick(); cdTimer = setInterval(tick, 1000);
+        }).catch(function (e) { err.textContent = erroAmigavel(e); resend.disabled = false; });
+      });
+      other.addEventListener('click', function () { viewCreateAccount(email); });
+      code.addEventListener('input', function () { code.value = code.value.replace(/\D/g, '').slice(0, 6); err.textContent = ''; });
+
+      form.addEventListener('submit', function (ev) {
+        ev.preventDefault();
+        if (code.value.length !== 6) { err.textContent = 'Digite os 6 números do código.'; return; }
+        if (!tempPass.value) { err.textContent = 'Digite a senha temporária que chegou no e-mail.'; return; }
+        btn.disabled = true; btn.textContent = 'Criando conta...'; err.textContent = '';
+        api('confirmCreateAccount', { email: email, code: code.value, tempPassword: tempPass.value }, true).then(function (d) {
+          saveSession(d.token, d.user);
+          var pl = pendingLogin; pendingLogin = null;
+          overlay.hidden = true; stopTimer();
+          notify(); refreshPurchases();
+          toast('Conta criada! Bem-vindo(a), ' + (d.user.name || d.user.email) + '.', 'success');
+          if (pl) pl.resolve(d.user);
+        }).catch(function (e) {
+          err.textContent = erroAmigavel(e); btn.disabled = false; btn.textContent = 'Criar conta e entrar'; code.select();
+        });
+      });
+      bodyEl.appendChild(form);
+      setTimeout(function () { code.focus(); }, 50);
+    }
+
     // Tela 3: minha conta + histórico de compras
     function viewAccount() {
       ensureModal(); stopTimer();
@@ -4851,6 +5047,10 @@
         }).catch(function (e) { nameErr.textContent = e.message; });
       });
       bodyEl.appendChild(nameForm);
+
+      // [V9] Meus Pontos e Indicações + Portal do Cliente (trocar senha de acesso).
+      renderPointsSection(bodyEl);
+      renderPasswordPortal(bodyEl);
 
       bodyEl.appendChild(el('h4', 'ch-sub-title', 'Minhas compras'));
       var list = el('div', 'ch-purchase-list');
@@ -4928,7 +5128,17 @@
       } else if (!m.salesEnabled) {
         wrap.appendChild(mkBoxBtn('Vendas desativadas', null, appId, true));
       } else {
-        wrap.appendChild(mkBoxBtn('🛒 Comprar — R$ ' + money(m.price), 'data-ch-buy', appId));
+        // [V9] Preço com o desconto validado (convite ou cupom): o servidor
+        // recalcula no checkout — aqui é só a prévia do valor final.
+        var desc = checkoutDiscount[appId];
+        var rotulo = '🛒 Comprar — R$ ' + money(m.price);
+        if (desc) {
+          var finalPrev = Math.max(0, m.price * (100 - desc.pct) / 100);
+          rotulo = '🛒 Comprar — R$ ' + money(finalPrev) + ' (de R$ ' + money(m.price) + ')';
+        }
+        wrap.appendChild(mkBoxBtn(rotulo, 'data-ch-buy', appId));
+        // [V9] Campo de convite/cupom do admin (item 2): fica junto do Comprar.
+        renderDiscountBox(wrap, appId, m);
       }
       if (canDownload) {
         // [NOVO] enquanto baixa, o botão mostra o progresso e fica desativado
@@ -5074,6 +5284,9 @@
            chegava a rodar. Um só botão, um só método: o que funciona. */
         return api('getDownload', { appId: appId });
       }).then(function (d) {
+        // [V9] Na compra aprovada ou no download gratuito o servidor pode
+        // devolver a senha de acesso nova: mostrar UMA vez (nunca guardar).
+        if (d.accessPassword) showAccessPasswordOnce(d.accessPassword);
         if (!d.seguro) { // app com link externo (ex.: GitHub): comportamento antigo
           lastLinks[appId] = d; setBusy(appId, null); startDownload(d.url);
           toast('Download iniciado!', 'success');
@@ -5123,8 +5336,14 @@
     function doBuy(appId) {
       requireLogin().then(function () {
         // O Mercado Pago só devolve o cliente para endereços https; o servidor cuida disso.
-        return api('createCheckout', { appId: appId, returnUrl: location.href.split('#')[0].split('?')[0] });
+        // [V9] Envia o código validado (convite OU cupom, nunca os dois): o
+        // servidor calcula o desconto e devolve o valor final.
+        var payload = { appId: appId, returnUrl: location.href.split('#')[0].split('?')[0] };
+        var desc = checkoutDiscount[appId];
+        if (desc) { if (desc.kind === 'invite') payload.inviteCode = desc.code; else payload.couponCode = desc.code; }
+        return api('createCheckout', payload);
       }).then(function (d) {
+        if (d.accessPassword) showAccessPasswordOnce(d.accessPassword);
         if (d.alreadyOwned) { owned[appId] = true; renderBoxes(); toast('Você já comprou este aplicativo.', 'info'); return; }
         pending[appId] = d.purchaseId; checkoutLinks[appId] = d.checkoutUrl;
         try { localStorage.setItem(PENDING_KEY, JSON.stringify({ id: d.purchaseId, appId: appId })); } catch (_) {}
@@ -5137,7 +5356,8 @@
     function doCheck(appId, silent) {
       return api('checkPurchase', { appId: appId }).then(function (d) {
         if (d.status === 'approved') {
-          owned[appId] = true; delete pending[appId];
+          owned[appId] = true; delete pending[appId]; delete checkoutDiscount[appId];
+          if (d.accessPassword) showAccessPasswordOnce(d.accessPassword);
           toast('Pagamento aprovado! Download liberado.', 'success');
           refreshPurchases();
         } else if (!silent) toast('O pagamento ainda não foi confirmado. Tente de novo em instantes.', 'info');
@@ -5156,6 +5376,8 @@
       (function poll(n) {
         api('checkPurchase', { purchaseId: id }).then(function (d) {
           if (d.status === 'approved') {
+            if (d.appId) delete checkoutDiscount[d.appId];
+            if (d.accessPassword) showAccessPasswordOnce(d.accessPassword);
             toast('Pagamento aprovado! Download liberado.', 'success');
             refreshPurchases().then(function () { if (d.appId && window.chApp) window.chApp.openApp(d.appId, 'download'); });
           } else if (n < 8) setTimeout(function () { poll(n + 1); }, 4000);
@@ -5163,6 +5385,633 @@
         }).catch(function () {});
       })(0);
     }
+
+
+    /* =========================================================
+       [V9] INDICAÇÃO / PONTOS / CUPONS / SENHA DE ACESSO /
+       LOGIN DO APP NA ENTRADA
+       Regra de ouro: tudo que decide valor, desconto, pontos,
+       cupom, senha ou sessão é NO SERVIDOR. Aqui só exibimos
+       o que ele devolve e enviamos o que o usuário digitou.
+       Nada de senha vai para o localStorage — só sessionId,
+       expiraEm e a prova temporária (que expira em 2 min e o
+       servidor pode recusar a qualquer hora).
+       ========================================================= */
+
+    /* ---------- util ---------- */
+    function erroAmigavel(err) {
+      var msg = String((err && err.message) || 'Erro no servidor.');
+      var mapa = {
+        'CUPOM_INVALIDO': 'Cupom inválido. Confira o código e tente de novo.',
+        'CUPOM_USADO': 'Este cupom já foi usado.',
+        'CUPOM_EXPIRADO': 'Este cupom expirou.',
+        'CONVITE_INVALIDO': 'Código de convite inválido.',
+        'CONVITE_USADO': 'Este código de convite já foi usado.',
+        'AGUARDE_1H': 'Muitas tentativas. Aguarde 1 hora para tentar de novo.'
+      };
+      return mapa[msg] || msg;
+    }
+    function parseExpira(v) {
+      if (v === undefined || v === null || v === '') return 0;
+      if (typeof v === 'number') return v;
+      var n = Number(v);
+      if (isFinite(n) && n > 0) return n;
+      var t = Date.parse(v);
+      return isNaN(t) ? 0 : t;
+    }
+
+    /* ---------- deviceId (um por aparelho, guardado no navegador) ---------- */
+    var DEVICE_KEY = 'chDeviceId';
+    function getOrCreateDeviceId() {
+      try {
+        var d = localStorage.getItem(DEVICE_KEY);
+        if (d) return d;
+        var hex = '';
+        try {
+          var buf = new Uint8Array(16);
+          if (window.crypto && window.crypto.getRandomValues) window.crypto.getRandomValues(buf);
+          for (var i = 0; i < buf.length; i++) hex += ('0' + buf[i].toString(16)).slice(-2);
+        } catch (_) {}
+        if (!hex) { for (var j = 0; j < 32; j++) hex += '0123456789abcdef'[(Math.random() * 16) | 0]; }
+        d = 'dev-' + hex;
+        localStorage.setItem(DEVICE_KEY, d);
+        return d;
+      } catch (_) { return 'dev-navegador'; }
+    }
+
+    /* ---------- sessão do app (login na entrada) + prova de atualização ----------
+       Sessão: 1 h (guardada). Prova: criptografada, 2 min, emitida no appLogin
+       e enviada ao servidor de atualizações no download. Sem prova válida não
+       há download — o login é pedido de novo para emitir outra prova. */
+    var APP_SESSION_KEY = 'chHubAppSession_v1';
+    var appSession = null; // só em memória: { sessionId, expiraEm, email, updateProof, updateProofExp }
+    function saveAppSession(sessionId, expiraEm, email, updateProof, updateProofExp) {
+      appSession = { sessionId: sessionId, expiraEm: parseExpira(expiraEm), email: email || '', updateProof: updateProof || '', updateProofExp: parseExpira(updateProofExp) };
+      try { localStorage.setItem(APP_SESSION_KEY, JSON.stringify({ sessionId: appSession.sessionId, expiraEm: appSession.expiraEm, email: appSession.email, updateProof: appSession.updateProof, updateProofExp: appSession.updateProofExp, deviceId: getOrCreateDeviceId() })); } catch (_) {}
+    }
+    function loadAppSession() {
+      try {
+        var raw = localStorage.getItem(APP_SESSION_KEY);
+        if (!raw) return null;
+        var s = JSON.parse(raw);
+        if (!s || !s.sessionId) return null;
+        if (s.deviceId && s.deviceId !== getOrCreateDeviceId()) return null; // sessão de outro aparelho
+        if (s.expiraEm && Date.now() >= Number(s.expiraEm)) return null; // expirada
+        appSession = { sessionId: s.sessionId, expiraEm: Number(s.expiraEm) || 0, email: s.email || '', updateProof: s.updateProof || '', updateProofExp: Number(s.updateProofExp) || 0 };
+        return appSession;
+      } catch (_) { return null; }
+    }
+    function clearAppSession() {
+      appSession = null;
+      try { localStorage.removeItem(APP_SESSION_KEY); } catch (_) {}
+    }
+    function getAppSessionId() {
+      // Devolve a sessionId guardada só se ainda válida; se expirou, apaga
+      // e devolve null para o login ser pedido de novo.
+      if (appSession && appSession.sessionId) {
+        if (appSession.expiraEm && Date.now() >= appSession.expiraEm) { clearAppSession(); return null; }
+        return appSession.sessionId;
+      }
+      var s = loadAppSession();
+      return s ? s.sessionId : null;
+    }
+    // Prova válida? Confere a expiração com margem de ~30 s (a prova dura 2 min).
+    function getUpdateProofBundle() {
+      var s = appSession || loadAppSession();
+      if (!s || !s.updateProof) return Promise.resolve(null);
+      if (!s.updateProofExp || Date.now() >= s.updateProofExp - 30000) return Promise.resolve(null);
+      return getHubAppId().then(function (appId) {
+        return { proof: s.updateProof, email: s.email || (user ? user.email : ''), appId: appId, deviceId: getOrCreateDeviceId() };
+      });
+    }
+    // Garante uma prova válida para o download: se não houver, faz o login
+    // do app de novo (appLogin) para emitir uma prova nova e tenta em seguida.
+    function requireUpdateProof() {
+      return getUpdateProofBundle().then(function (b) {
+        if (b) return b;
+        return requireAppLogin(true).then(function () { return getUpdateProofBundle(); }).then(function (b2) {
+          if (!b2) throw makeErr('Não foi possível obter a prova de atualização. Tente de novo.', 'no_proof');
+          return b2;
+        });
+      });
+    }
+    function getHubAppId() {
+      if (window.chHubGetAppId) return window.chHubGetAppId();
+      try {
+        var id = localStorage.getItem('chHubAppId_v1') || localStorage.getItem('chHubAppIdBackup_v1') || '';
+        return Promise.resolve(id);
+      } catch (_) { return Promise.resolve(''); }
+    }
+    function isFinalExport() {
+      try { return typeof EMBEDDED_EXPORT !== 'undefined' && !!EMBEDDED_EXPORT; } catch (_) { return false; }
+    }
+    // Na entrada do app (só no HTML final): sessão válida guardada entra
+    // direto; sem sessão, abre o login do app. Fechar a janela não bloqueia
+    // a navegação — só o download da atualização fica bloqueado até entrar.
+    function checkAppSessionAtEntry() {
+      if (!isFinalExport()) return;
+      if (!backendUrl()) return;
+      if (getAppSessionId()) return;
+      requireAppLogin().catch(function () {});
+    }
+    function requireAppLogin(force) {
+      // Sem force: sessão válida (1 h) entra direto. Com force: abre o login
+      // mesmo com sessão válida (é o caso do download sem prova — a prova
+      // nova só nasce num appLogin novo).
+      var sid = force ? null : getAppSessionId();
+      if (sid) return Promise.resolve(sid);
+      if (!backendUrl()) { toast('O servidor ainda não foi configurado pelo administrador.', 'error'); return Promise.reject(makeErr('no_backend', 'no_backend')); }
+      return new Promise(function (resolve, reject) {
+        if (pendingAppLogin) pendingAppLogin.reject(makeErr('cancelled', 'cancelled'));
+        pendingAppLogin = { resolve: resolve, reject: reject };
+        ensureModal();
+        if (overlay) overlay.style.zIndex = '100000'; // acima do aviso de atualização
+        viewAppLoginEmail(user ? user.email : '');
+        openModal();
+      });
+    }
+    // Tela 1 do login do app: pedir o e-mail (o login da LOJA continua separado).
+    function viewAppLoginEmail(prefill) {
+      ensureModal(); stopTimer();
+      titleEl.textContent = 'Entrar no aplicativo';
+      bodyEl.textContent = '';
+      var form = el('form', 'ch-modal-form'); form.noValidate = true;
+      form.appendChild(el('p', 'ch-note', 'Para usar o aplicativo e baixar atualizações, entre com o e-mail usado na loja. Enviaremos um código de 6 dígitos e depois pediremos a sua senha de acesso.'));
+      var email = mkInput('email', 'seu@email.com', { autocomplete: 'email', inputmode: 'email', maxlength: '120', 'aria-label': 'Seu e-mail' });
+      if (prefill) email.value = prefill;
+      var err = el('div', 'ch-err'); err.setAttribute('role', 'alert');
+      var btn = mkPrimary('Enviar código');
+      form.appendChild(email); form.appendChild(err); form.appendChild(btn);
+      form.addEventListener('submit', function (ev) {
+        ev.preventDefault();
+        var val = email.value.trim();
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val)) { err.textContent = 'Digite um e-mail válido.'; return; }
+        btn.disabled = true; btn.textContent = 'Enviando...'; err.textContent = '';
+        api('requestCode', { email: val }, true).then(function () {
+          viewAppLoginCode(val);
+        }).catch(function (e) {
+          err.textContent = erroAmigavel(e); btn.disabled = false; btn.textContent = 'Enviar código';
+        });
+      });
+      bodyEl.appendChild(form);
+      setTimeout(function () { email.focus(); }, 50);
+    }
+    // Tela 2 do login do app: código + senha de acesso -> appLogin.
+    function viewAppLoginCode(email) {
+      stopTimer();
+      titleEl.textContent = 'Código + senha de acesso';
+      bodyEl.textContent = '';
+      var form = el('form', 'ch-modal-form'); form.noValidate = true;
+      form.appendChild(el('p', 'ch-note', 'Enviamos um código de 6 dígitos para ' + email + '. Digite o código e a sua senha de acesso (a que veio na compra/download, ou a que você trocou no portal).'));
+      var code = mkInput('text', '000000', { inputmode: 'numeric', maxlength: '6', autocomplete: 'one-time-code', 'aria-label': 'Código de verificação' });
+      code.className += ' ch-code-input';
+      var pass = mkInput('password', 'Senha de acesso', { autocomplete: 'current-password', 'aria-label': 'Senha de acesso' });
+      var err = el('div', 'ch-err'); err.setAttribute('role', 'alert');
+      var btn = mkPrimary('Entrar no aplicativo');
+      var row = el('div', 'ch-btn-row');
+      var resend = mkGhost('Reenviar código'); var other = mkGhost('Usar outro e-mail');
+      row.appendChild(resend); row.appendChild(other);
+      // [V11] "Esqueci a senha": abre a redefinicao por codigo no mesmo modal.
+      var rowForgot = el('div', 'ch-btn-row');
+      var forgot = mkGhost('Esqueci a senha');
+      rowForgot.appendChild(forgot);
+      form.appendChild(code); form.appendChild(pass); form.appendChild(err); form.appendChild(btn); form.appendChild(row); form.appendChild(rowForgot);
+      forgot.addEventListener('click', function () { viewAppResetPassword(email); });
+
+      var left = 60;
+      function tick() {
+        if (left > 0) { resend.disabled = true; resend.textContent = 'Reenviar em ' + left + 's'; left--; }
+        else { resend.disabled = false; resend.textContent = 'Reenviar código'; stopTimer(); }
+      }
+      tick(); cdTimer = setInterval(tick, 1000);
+
+      resend.addEventListener('click', function () {
+        resend.disabled = true; err.textContent = '';
+        api('requestCode', { email: email }, true).then(function () {
+          toast('Novo código enviado.', 'success'); left = 60; stopTimer(); tick(); cdTimer = setInterval(tick, 1000);
+        }).catch(function (e) { err.textContent = erroAmigavel(e); resend.disabled = false; });
+      });
+      other.addEventListener('click', function () { viewAppLoginEmail(email); });
+      code.addEventListener('input', function () { code.value = code.value.replace(/\D/g, '').slice(0, 6); err.textContent = ''; });
+
+      form.addEventListener('submit', function (ev) {
+        ev.preventDefault();
+        if (code.value.length !== 6) { err.textContent = 'Digite os 6 números do código.'; return; }
+        if (!pass.value) { err.textContent = 'Digite a sua senha de acesso.'; return; }
+        btn.disabled = true; btn.textContent = 'Entrando...'; err.textContent = '';
+        var senha = pass.value; pass.value = ''; // a senha só vive nesta função
+        getHubAppId().then(function (appId) {
+          return api('appLogin', { email: email, code: code.value, password: senha, appId: appId, deviceId: getOrCreateDeviceId() }, true);
+        }).then(function (d) {
+          saveAppSession(d.sessionId, d.expiraEm, email, d.updateProof, d.updateProofExp);
+          var pl = pendingAppLogin; pendingAppLogin = null;
+          overlay.hidden = true; stopTimer();
+          toast('Login do aplicativo realizado! Você já pode baixar atualizações.', 'success');
+          if (pl) pl.resolve(d.sessionId);
+        }).catch(function (e) {
+          // O servidor pode mandar AGUARDE_1H com os minutos que faltam.
+          if (e.code === 'AGUARDE_1H' && e.data && e.data.faltaMinutos) err.textContent = 'Muitas tentativas. Aguarde ' + e.data.faltaMinutos + ' minuto(s) para tentar de novo.';
+          else err.textContent = erroAmigavel(e);
+          btn.disabled = false; btn.textContent = 'Entrar no aplicativo'; code.select();
+        });
+      });
+      bodyEl.appendChild(form);
+      setTimeout(function () { code.focus(); }, 50);
+    }
+
+    // [V11] Tela de redefinicao da senha de acesso (a partir do login do app):
+    // envia um codigo novo para o mesmo e-mail, pede codigo + nova senha e
+    // chama resetAccessPassword (mesma rota do portal de senha). O codigo e
+    // de uso unico: depois de redefinir, pede um codigo novo e volta ao login.
+    function viewAppResetPassword(email) {
+      stopTimer();
+      titleEl.textContent = 'Redefinir senha de acesso';
+      bodyEl.textContent = '';
+      var form = el('form', 'ch-modal-form'); form.noValidate = true;
+      form.appendChild(el('p', 'ch-note', 'Vamos enviar um código de 6 dígitos para ' + email + '. Digite o código e a sua nova senha de acesso (senha forte: com letras e números).'));
+      var send = mkGhost('Enviar código'); send.type = 'button';
+      var code = mkInput('text', 'Código de 6 dígitos', { inputmode: 'numeric', maxlength: '6', autocomplete: 'one-time-code', 'aria-label': 'Código de verificação' });
+      code.className += ' ch-code-input';
+      var newPass = mkInput('password', 'Nova senha de acesso', { autocomplete: 'new-password', 'aria-label': 'Nova senha de acesso' });
+      var err = el('div', 'ch-err'); err.setAttribute('role', 'alert');
+      var btn = mkPrimary('Redefinir senha');
+      var row = el('div', 'ch-btn-row');
+      var back = mkGhost('Voltar ao login');
+      row.appendChild(back);
+      form.appendChild(send); form.appendChild(code); form.appendChild(newPass); form.appendChild(err); form.appendChild(btn); form.appendChild(row);
+
+      var left = 60; var sent = false;
+      function tick() {
+        if (left > 0) { send.disabled = true; send.textContent = 'Enviar código em ' + left + 's'; left--; }
+        else { send.disabled = false; send.textContent = 'Enviar código'; stopTimer(); }
+      }
+      send.addEventListener('click', function () {
+        send.disabled = true; err.textContent = '';
+        api('requestCode', { email: email }, true).then(function () {
+          toast('Código enviado para o seu e-mail.', 'success');
+          sent = true; left = 60; stopTimer(); tick(); cdTimer = setInterval(tick, 1000);
+        }).catch(function (e) { err.textContent = erroAmigavel(e); send.disabled = false; });
+      });
+      back.addEventListener('click', function () { viewAppLoginCode(email); });
+      code.addEventListener('input', function () { code.value = code.value.replace(/\D/g, '').slice(0, 6); err.textContent = ''; });
+
+      form.addEventListener('submit', function (ev) {
+        ev.preventDefault();
+        if (!sent) { err.textContent = 'Toque em "Enviar código" para receber o código por e-mail.'; return; }
+        if (code.value.length !== 6) { err.textContent = 'Digite os 6 números do código.'; return; }
+        if (!newPass.value) { err.textContent = 'Digite a nova senha.'; return; }
+        btn.disabled = true; btn.textContent = 'Redefinindo...'; err.textContent = '';
+        api('resetAccessPassword', { email: email, code: code.value, newPassword: newPass.value }).then(function () {
+          toast('Senha redefinida. Entre com a nova senha.', 'success');
+          // O codigo foi gasto na redefinicao: pede um codigo novo e volta
+          // ao login ja pronto para digitar o codigo + a nova senha.
+          api('requestCode', { email: email }, true).then(function () { viewAppLoginCode(email); })
+            .catch(function () { viewAppLoginCode(email); });
+        }).catch(function (e) {
+          err.textContent = erroAmigavel(e); btn.disabled = false; btn.textContent = 'Redefinir senha'; code.select();
+        });
+      });
+      bodyEl.appendChild(form);
+      setTimeout(function () { send.focus(); }, 50);
+    }
+
+    /* ---------- senha de acesso recebida UMA vez (nunca guardada) ---------- */
+    var shownAccessPasswords = {}; // só em memória: evita mostrar a mesma senha 2x
+    function showAccessPasswordOnce(pwd) {
+      if (!pwd || shownAccessPasswords[pwd]) return;
+      shownAccessPasswords[pwd] = true;
+      ensureModal(); stopTimer();
+      titleEl.textContent = 'Sua senha de acesso';
+      bodyEl.textContent = '';
+      bodyEl.appendChild(el('p', 'ch-note', 'Guarde esta senha: ela só aparece UMA vez. Você vai precisar dela (junto com o e-mail e o código) para entrar no aplicativo e baixar atualizações. Dá para trocar depois em "Minha conta" → "Trocar senha de acesso".'));
+      var box = el('div', 'ch-access-once');
+      var inp = el('input', 't-input ch-input'); inp.type = 'text'; inp.readOnly = true; inp.value = pwd; inp.setAttribute('aria-label', 'Senha de acesso');
+      inp.addEventListener('focus', function () { inp.select(); });
+      var copy = mkGhost('Copiar senha');
+      copy.addEventListener('click', function () {
+        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(pwd).then(function () { toast('Senha copiada.', 'success'); }).catch(function () { inp.select(); });
+        else inp.select();
+      });
+      box.appendChild(inp); box.appendChild(copy);
+      bodyEl.appendChild(box);
+      var ok = mkPrimary('Entendi, guardei a senha'); ok.type = 'button';
+      ok.addEventListener('click', closeModal);
+      bodyEl.appendChild(ok);
+      openModal();
+    }
+
+    /* ---------- checkout: convite OU cupom (um ou outro, nunca os dois) ---------- */
+    var checkoutDiscount = {}; // appId -> { kind:'invite'|'coupon', code, pct } (só em memória)
+    // [V9] Convite recebido por link compartilhado (?convite=CH-XXXX): pre-preenche o campo no checkout.
+    var pendingInviteCode = '';
+    try { var _q = new URLSearchParams(location.search); pendingInviteCode = (_q.get('convite') || '').trim().toUpperCase(); } catch (e) {}
+    function renderDiscountBox(wrap, appId, m) {
+      var box = el('div', 'ch-discount-box');
+      var d = checkoutDiscount[appId];
+      if (d) {
+        // Desconto já validado: mostra original, desconto e final + remover.
+        var desconto = m.price * d.pct / 100;
+        var final = Math.max(0, m.price - desconto);
+        var sum = el('div', 'ch-discount-summary');
+        sum.appendChild(el('span', '', '✔ ' + (d.kind === 'invite' ? 'Código de convite' : 'Cupom') + ' aplicado: '));
+        sum.appendChild(el('b', '', d.code + ' (-' + d.pct + '%)'));
+        sum.appendChild(el('span', '', '  •  De R$ ' + money(m.price) + ' por R$ ' + money(final) + '. O valor final é confirmado pelo servidor no checkout.'));
+        box.appendChild(sum);
+        var rm = mkGhost('Remover desconto'); rm.type = 'button';
+        rm.addEventListener('click', function () { delete checkoutDiscount[appId]; renderBoxes(); });
+        box.appendChild(rm);
+        wrap.appendChild(box);
+        return;
+      }
+      box.appendChild(el('p', 'ch-note', '💸 Tem código de convite ou cupom de desconto? Use um ou outro — nunca os dois.'));
+      var row = el('div', 'ch-discount-row');
+      var inviteIn = mkInput('text', 'Código de convite (ex: CH-XXXX)', { maxlength: '40', 'aria-label': 'Código de convite' });
+      var couponIn = mkInput('text', 'Cupom de desconto', { maxlength: '40', 'aria-label': 'Cupom de desconto' });
+      var result = el('div', 'ch-err'); result.setAttribute('role', 'alert');
+      // [V9] Veio de link compartilhado (?convite=CH-XXXX): o campo ja vem preenchido.
+      if (pendingInviteCode) { inviteIn.value = pendingInviteCode; couponIn.value = ''; couponIn.disabled = true; pendingInviteCode = ''; }
+      // Se preencher um, o outro é limpo e desativado.
+      inviteIn.addEventListener('input', function () {
+        if (inviteIn.value.trim()) { couponIn.value = ''; couponIn.disabled = true; }
+        else couponIn.disabled = false;
+        result.textContent = '';
+      });
+      couponIn.addEventListener('input', function () {
+        if (couponIn.value.trim()) { inviteIn.value = ''; inviteIn.disabled = true; }
+        else inviteIn.disabled = false;
+        result.textContent = '';
+      });
+      var btn = el('button', 'ch-btn-ghost', 'Validar'); btn.type = 'button';
+      btn.addEventListener('click', function () {
+        var inv = inviteIn.value.trim(), cup = couponIn.value.trim();
+        if (!inv && !cup) { result.textContent = 'Digite um código de convite ou um cupom.'; return; }
+        btn.disabled = true; result.textContent = 'Validando...'; result.style.color = '';
+        var p;
+        if (inv) {
+          p = api('validateInvite', { inviteCode: inv, email: user.email, appId: appId, deviceId: getOrCreateDeviceId() })
+            .then(function (r) { return { kind: 'invite', code: inv, pct: r.discountPct }; });
+        } else {
+          p = api('validateCoupon', { couponCode: cup, email: user.email })
+            .then(function (r) { return { kind: 'coupon', code: cup, pct: r.pct }; });
+        }
+        p.then(function (ok) {
+          checkoutDiscount[appId] = ok;
+          toast('Desconto de ' + ok.pct + '% aplicado! Valor final no checkout.', 'success');
+          renderBoxes();
+        }).catch(function (e) {
+          result.textContent = erroAmigavel(e); btn.disabled = false;
+        });
+      });
+      row.appendChild(inviteIn); row.appendChild(couponIn); row.appendChild(btn); row.appendChild(result);
+      box.appendChild(row);
+      wrap.appendChild(box);
+    }
+
+    /* ---------- área "Meus Pontos e Indicações" (dentro de Minha conta) ---------- */
+    function renderPointsSection(body) {
+      body.appendChild(el('h4', 'ch-sub-title', '🎁 Meus Pontos e Indicações'));
+      var box = el('div', 'ch-points-box');
+      box.appendChild(el('p', 'ch-note', 'Carregando seus pontos...'));
+      body.appendChild(box);
+      api('myPoints', { email: user.email }).then(function (d) {
+        box.textContent = '';
+        var row = el('div', 'ch-coupon-row');
+        row.appendChild(el('span', 'ch-note', 'Seu código de convite: '));
+        row.appendChild(el('strong', '', d.inviteCode || '—'));
+        var copy = mkGhost('Copiar'); copy.type = 'button';
+        copy.addEventListener('click', function () {
+          if (d.inviteCode && navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(d.inviteCode).then(function () { toast('Código de convite copiado.', 'success'); }).catch(function () {});
+        });
+        row.appendChild(copy);
+        // [V9] Botao "Enviar convite" (aba do perfil): compartilha o link da loja
+        // com a mensagem e o codigo da pessoa, igual a compartilhar a pagina.
+        var share = mkGhost('📤 Enviar convite'); share.type = 'button';
+        share.addEventListener('click', function () {
+          if (!d.inviteCode) { toast('Você ainda não tem código de convite.', 'error'); return; }
+          var base = location.href.split('?')[0].split('#')[0];
+          var link = base + '?convite=' + encodeURIComponent(d.inviteCode);
+          var msg = 'Use meu convite e ganhe desconto excelente na sua primeira compra! Meu código de convite é ' + d.inviteCode + '. Baixe aqui: ' + link;
+          if (navigator.share) {
+            navigator.share({ title: 'CH Technology', text: msg, url: link }).catch(function () {});
+          } else if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(msg).then(function () { toast('Convite copiado. Cole onde quiser compartilhar.', 'success'); }).catch(function () {});
+          } else {
+            window.prompt('Copie o convite:', msg);
+          }
+        });
+        row.appendChild(share);
+        box.appendChild(row);
+        box.appendChild(el('p', 'ch-note', 'Saldo atual: ' + (d.points || 0) + ' ponto(s). Indique amigos com seu código e ganhe pontos quando a compra deles for aprovada.'));
+        var redeemRow = el('div', 'ch-btn-row');
+        [[10, 10], [50, 20], [100, 50], [200, 100]].forEach(function (pair) {
+          var b = el('button', 'ch-btn-ghost', 'Trocar ' + pair[0] + ' pts → cupom ' + pair[1] + '%'); b.type = 'button';
+          b.addEventListener('click', function () {
+            if (!window.confirm('Trocar ' + pair[0] + ' pontos por um cupom de ' + pair[1] + '% de desconto?')) return;
+            b.disabled = true;
+            api('redeemPoints', { email: user.email, points: pair[0] }).then(function (r) {
+              toast('Cupom gerado: ' + r.couponCode + ' (' + r.pct + '% de desconto). Ele já está na sua lista de cupons.', 'success');
+              viewAccount(); // recarrega a conta com o novo cupom na lista
+            }).catch(function (e) { toast(erroAmigavel(e), 'error'); b.disabled = false; });
+          });
+          redeemRow.appendChild(b);
+        });
+        box.appendChild(redeemRow);
+        box.appendChild(el('h4', 'ch-sub-title', 'Meus cupons'));
+        var cups = d.coupons || [];
+        if (!cups.length) box.appendChild(el('p', 'ch-note', 'Você ainda não tem cupons.'));
+        cups.forEach(function (c) {
+          var r = el('div', 'ch-coupon-row');
+          r.appendChild(el('strong', '', c.codigo || c.code || ''));
+          r.appendChild(el('span', 'ch-note', (c.pct !== undefined ? c.pct : (c.percentual || '')) + '% • ' + (c.status || 'ativo')));
+          box.appendChild(r);
+        });
+        box.appendChild(el('h4', 'ch-sub-title', 'Extrato de pontuação'));
+        var hist = d.history || [];
+        if (!hist.length) box.appendChild(el('p', 'ch-note', 'Sem movimentações ainda.'));
+        hist.forEach(function (h) {
+          var r = el('div', 'ch-coupon-row');
+          var txt = (h.descricao || h.motivo || h.tipo || 'Pontos');
+          var pts = (h.pontos !== undefined && h.pontos !== null) ? h.pontos : (h.valor !== undefined ? h.valor : '');
+          var dt = (h.data || h.createdAt) ? formatDate(h.data || h.createdAt) : '';
+          r.appendChild(el('span', 'ch-note', txt + (pts !== '' ? ' • ' + (Number(pts) > 0 ? '+' : '') + pts + ' pts' : '') + (dt ? ' • ' + dt : '')));
+          box.appendChild(r);
+        });
+      }).catch(function (e) {
+        box.textContent = '';
+        box.appendChild(el('p', 'ch-err', erroAmigavel(e)));
+      });
+    }
+
+    /* ---------- portal do cliente: trocar a senha de acesso ---------- */
+    // [V10] Depois de trocar/redefinir a senha com sucesso: limpa a flag local,
+    // reconfere o `me` no servidor (que já limpou a flag) e esconde o banner.
+    function aposTrocaSenha() {
+      if (user) { user.precisaTrocarSenha = false; try { localStorage.setItem(USER_KEY, JSON.stringify(user)); } catch (_) {} }
+      notify();
+      api('me').then(function (d) {
+        user = d.user;
+        try { localStorage.setItem(USER_KEY, JSON.stringify(user)); } catch (_) {}
+        notify();
+      }).catch(function () {});
+      viewAccount();
+    }
+    function renderPasswordPortal(body) {
+      var senhaTitle = el('h4', 'ch-sub-title', '🔑 Trocar senha de acesso');
+      senhaTitle.id = 'ch-senha-portal'; // [V10] alvo do botão "Trocar senha agora" do banner
+      body.appendChild(senhaTitle);
+      body.appendChild(el('p', 'ch-note', 'A senha de acesso é a senha do aplicativo (login na entrada, junto com o e-mail e o código). Troque com a senha atual ou com um código enviado por e-mail.'));
+      var mode = 'current'; // 'current' (senha atual) ou 'code' (código por e-mail)
+      var area = el('div', 'ch-modal-form');
+      body.appendChild(area);
+      var toggleRow = el('div', 'ch-btn-row');
+      var bCur = mkGhost('Com a senha atual'); var bCode = mkGhost('Com código por e-mail');
+      toggleRow.appendChild(bCur); toggleRow.appendChild(bCode);
+      body.appendChild(toggleRow);
+
+      function paint() {
+        area.textContent = '';
+        var form = el('form', 'ch-modal-form'); form.noValidate = true;
+        var err = el('div', 'ch-err'); err.setAttribute('role', 'alert');
+        var newPass = mkInput('password', 'Nova senha de acesso', { autocomplete: 'new-password', minlength: '4', 'aria-label': 'Nova senha de acesso' });
+        var newPass2 = mkInput('password', 'Repita a nova senha', { autocomplete: 'new-password', 'aria-label': 'Repita a nova senha' });
+        var btn = mkPrimary('Trocar senha');
+        if (mode === 'current') {
+          var cur = mkInput('password', 'Senha atual', { autocomplete: 'current-password', 'aria-label': 'Senha atual' });
+          form.appendChild(cur); form.appendChild(newPass); form.appendChild(newPass2); form.appendChild(err); form.appendChild(btn);
+          form.addEventListener('submit', function (ev) {
+            ev.preventDefault();
+            if (!cur.value || !newPass.value) { err.textContent = 'Preencha a senha atual e a nova senha.'; return; }
+            if (newPass.value !== newPass2.value) { err.textContent = 'A nova senha e a repetição não são iguais.'; return; }
+            btn.disabled = true; err.textContent = '';
+            api('changeAccessPassword', { email: user.email, currentPassword: cur.value, newPassword: newPass.value }).then(function () {
+              toast('Senha de acesso trocada.', 'success'); aposTrocaSenha(); // [V10] esconde o banner
+            }).catch(function (e) { err.textContent = erroAmigavel(e); btn.disabled = false; });
+          });
+        } else {
+          var code = mkInput('text', 'Código de 6 dígitos', { inputmode: 'numeric', maxlength: '6', autocomplete: 'one-time-code', 'aria-label': 'Código de verificação' });
+          var send = mkGhost('Enviar código por e-mail'); send.type = 'button';
+          send.addEventListener('click', function () {
+            send.disabled = true; err.textContent = '';
+            api('requestCode', { email: user.email }, true).then(function () { toast('Código enviado para o seu e-mail.', 'success'); send.disabled = false; })
+              .catch(function (e) { err.textContent = erroAmigavel(e); send.disabled = false; });
+          });
+          code.addEventListener('input', function () { code.value = code.value.replace(/\D/g, '').slice(0, 6); });
+          form.appendChild(send); form.appendChild(code); form.appendChild(newPass); form.appendChild(newPass2); form.appendChild(err); form.appendChild(btn);
+          form.addEventListener('submit', function (ev) {
+            ev.preventDefault();
+            if (code.value.length !== 6) { err.textContent = 'Digite os 6 números do código.'; return; }
+            if (!newPass.value) { err.textContent = 'Digite a nova senha.'; return; }
+            if (newPass.value !== newPass2.value) { err.textContent = 'A nova senha e a repetição não são iguais.'; return; }
+            btn.disabled = true; err.textContent = '';
+            api('changeAccessPassword', { email: user.email, code: code.value, newPassword: newPass.value }).then(function () {
+              toast('Senha de acesso trocada.', 'success'); aposTrocaSenha(); // [V10] esconde o banner
+            }).catch(function (e) { err.textContent = erroAmigavel(e); btn.disabled = false; });
+          });
+        }
+        area.appendChild(form);
+      }
+      bCur.addEventListener('click', function () { mode = 'current'; paint(); });
+      bCode.addEventListener('click', function () { mode = 'code'; paint(); });
+      paint();
+
+      // Reemitir/redefinir com código (esqueci a senha): rota separada do servidor.
+      body.appendChild(el('p', 'ch-note', 'Esqueceu a senha? Redefina com um código enviado por e-mail:'));
+      var resetForm = el('form', 'ch-modal-form'); resetForm.noValidate = true;
+      var resetErr = el('div', 'ch-err'); resetErr.setAttribute('role', 'alert');
+      var resetCode = mkInput('text', 'Código de 6 dígitos', { inputmode: 'numeric', maxlength: '6', autocomplete: 'one-time-code', 'aria-label': 'Código de redefinição' });
+      var resetPass = mkInput('password', 'Nova senha de acesso', { autocomplete: 'new-password', 'aria-label': 'Nova senha de acesso' });
+      var resetSend = mkGhost('Enviar código para redefinir'); resetSend.type = 'button';
+      resetSend.addEventListener('click', function () {
+        resetSend.disabled = true; resetErr.textContent = '';
+        api('requestCode', { email: user.email }, true).then(function () { toast('Código enviado para o seu e-mail.', 'success'); resetSend.disabled = false; })
+          .catch(function (e) { resetErr.textContent = erroAmigavel(e); resetSend.disabled = false; });
+      });
+      resetCode.addEventListener('input', function () { resetCode.value = resetCode.value.replace(/\D/g, '').slice(0, 6); });
+      var resetBtn = mkPrimary('Redefinir senha');
+      resetForm.appendChild(resetSend); resetForm.appendChild(resetCode); resetForm.appendChild(resetPass); resetForm.appendChild(resetErr); resetForm.appendChild(resetBtn);
+      resetForm.addEventListener('submit', function (ev) {
+        ev.preventDefault();
+        if (resetCode.value.length !== 6) { resetErr.textContent = 'Digite os 6 números do código.'; return; }
+        if (!resetPass.value) { resetErr.textContent = 'Digite a nova senha.'; return; }
+        resetBtn.disabled = true; resetErr.textContent = '';
+        api('resetAccessPassword', { email: user.email, code: resetCode.value, newPassword: resetPass.value }).then(function () {
+          toast('Senha redefinida.', 'success'); aposTrocaSenha(); // [V10] esconde o banner
+        }).catch(function (e) { resetErr.textContent = erroAmigavel(e); resetBtn.disabled = false; });
+      });
+      body.appendChild(resetForm);
+    }
+
+    /* ---------- Dev: gerar cupom de desconto (admin) ---------- */
+    var adminCouponsBound = false;
+    function bindAdminCoupons() {
+      var btn = document.getElementById('ch-coupon-gerar');
+      if (!btn || adminCouponsBound) return;
+      adminCouponsBound = true;
+      btn.addEventListener('click', function () {
+        var pctEl = document.getElementById('ch-coupon-percentual');
+        var diasEl = document.getElementById('ch-coupon-validade');
+        var err = document.getElementById('ch-coupon-erro');
+        var ok = document.getElementById('ch-coupon-ok');
+        var pct = pctEl ? parseInt(pctEl.value, 10) : NaN;
+        var dias = diasEl ? parseInt(diasEl.value, 10) : NaN;
+        if (err) err.textContent = ''; if (ok) ok.textContent = '';
+        if (!pct || pct < 1 || pct > 100) { if (err) err.textContent = 'Digite um percentual de 1 a 100.'; return; }
+        if (!dias || dias < 1) { if (err) err.textContent = 'Digite a validade em dias (mínimo 1).'; return; }
+        btn.disabled = true; btn.textContent = 'Gerando...';
+        requireSupport().then(function () {
+          return api('createAdminCoupon', { percentual: pct, validadeDias: dias });
+        }).then(function (d) {
+          if (ok) ok.textContent = 'Cupom criado: ' + (d.codigo || '') + (d.validade ? ' • válido até ' + formatDate(d.validade) : '') + ' — copie e envie ao cliente.';
+          refreshAdminCoupons();
+        }).catch(function (e) { if (err) err.textContent = erroAmigavel(e); })
+          .then(function () { btn.disabled = false; btn.textContent = 'Gerar cupom'; });
+      });
+      var upd = document.getElementById('ch-coupon-atualizar');
+      if (upd) upd.addEventListener('click', refreshAdminCoupons);
+      var tabBtn = document.querySelector('[data-subtab="cupons"]');
+      if (tabBtn) tabBtn.addEventListener('click', function () { setTimeout(refreshAdminCoupons, 50); });
+      refreshAdminCouponsIfVisible();
+    }
+    function refreshAdminCouponsIfVisible() {
+      var panel = document.getElementById('dev-subpanel-cupons');
+      if (!panel || panel.classList.contains('hidden')) return;
+      refreshAdminCoupons();
+    }
+    function refreshAdminCoupons() {
+      var list = document.getElementById('ch-coupon-lista');
+      if (!list || !user || !user.isSupport) return;
+      list.textContent = '';
+      list.appendChild(el('p', 'ch-note', 'Carregando...'));
+      api('listAdminCoupons').then(function (d) {
+        list.textContent = '';
+        var items = d.cupons || d.coupons || d.lista || [];
+        if (!items.length) { list.appendChild(el('p', 'ch-note', 'Nenhum cupom gerado ainda.')); return; }
+        items.forEach(function (c) {
+          var r = el('div', 'ch-coupon-row');
+          r.appendChild(el('strong', '', c.codigo || c.code || ''));
+          var info = (c.percentual !== undefined ? c.percentual : (c.pct || '')) + '%';
+          if (c.validade) info += ' • até ' + formatDate(c.validade);
+          if (c.status) info += ' • ' + c.status;
+          r.appendChild(el('span', 'ch-note', info));
+          list.appendChild(r);
+        });
+      }).catch(function (e) {
+        list.textContent = '';
+        list.appendChild(el('p', 'ch-err', erroAmigavel(e)));
+      });
+    }
+
+    // [V9] Ponte do login do app para o bloco de atualização (que roda antes
+    // deste e chama requireAppLogin/getSessionId no download da atualização).
+    window.chAppLogin = {
+      requireAppLogin: requireAppLogin,
+      requireUpdateProof: requireUpdateProof,
+      getUpdateProof: getUpdateProofBundle,
+      getSessionId: getAppSessionId,
+      getDeviceId: getOrCreateDeviceId,
+      getHubAppId: getHubAppId,
+      clearSession: clearAppSession
+    };
 
     /* ---------------------------------------------------------
        5) DEV — sincronizar apps, preço e vendas (rotas de administrador).
@@ -5514,8 +6363,11 @@
 
     function init() {
       restoreSession();
+      atualizarBannerSenha(); // [V10] reflete a flag já salva no navegador até o `me` confirmar
       updateHeader(); updateDevNav();
       bindServerCard(); bindCommentForm(); bindCommentTools();
+      bindAdminCoupons(); // [V9] sub-aba Dev "Gerar Cupom de Desconto"
+      checkAppSessionAtEntry(); // [V9] login do app na entrada (só no HTML final)
       renderCommentArea(); renderComments();
       if (backendUrl()) { loadMeta(); loadComments(); refreshPurchases(); handleReturnFromPayment(); }
     }
